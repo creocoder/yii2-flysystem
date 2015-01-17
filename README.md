@@ -1,5 +1,7 @@
 # Flysystem Extension for Yii 2
 
+*Under heavy development...*
+
 This extension provides [Flysystem](http://flysystem.thephpleague.com/) integration for the Yii framework.
 
 ## Installation
