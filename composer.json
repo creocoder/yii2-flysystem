@@ -1,0 +1,32 @@
+{
+    "name": "creocoder/yii2-flysystem",
+    "description": "The flysystem component for the Yii framework",
+    "keywords": [
+        "yii2",
+        "flysystem"
+    ],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Alexander Kochetov",
+            "email": "creocoder@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "league/flysystem": "0.5.12"
+    },
+    "suggest": {
+        "aws/aws-sdk-php": "Enables the aws connector.",
+        "barracuda/copy": "Enables the copy connector.",
+        "rackspace/php-opencloud": "Enables the rackspace connector.",
+        "dropbox/dropbox-sdk": "Enables the dropbox connector.",
+        "sabre/dav": "Enables the webdav connector."
+    },
+    "autoload": {
+        "psr-4": {
+            "creocoder\\flysystem\\": "src"
+        }
+    }
+}
