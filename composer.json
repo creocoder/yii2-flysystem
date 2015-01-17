@@ -15,13 +15,20 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "league/flysystem": "0.5.12"
+        "league/flysystem": "~0.5.12"
+    },
+    "require-dev": {
+        "aws/aws-sdk-php": "~2.4",
+        "barracuda/copy": "~1.1.4",
+        "dropbox/dropbox-sdk": "~1.1.1",
+        "rackspace/php-opencloud": "~1.10.0",
+        "sabre/dav": "~2.0.2"
     },
     "suggest": {
         "aws/aws-sdk-php": "Enables the aws connector.",
         "barracuda/copy": "Enables the copy connector.",
-        "rackspace/php-opencloud": "Enables the rackspace connector.",
         "dropbox/dropbox-sdk": "Enables the dropbox connector.",
+        "rackspace/php-opencloud": "Enables the rackspace connector.",
         "sabre/dav": "Enables the webdav connector."
     },
     "autoload": {
