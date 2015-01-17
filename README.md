@@ -1,8 +1,10 @@
 # Flysystem Extension for Yii 2
 
-*Under heavy development...*
+[![Code Quality](https://img.shields.io/scrutinizer/g/creocoder/yii2-flysystem/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/creocoder/yii2-flysystem/?branch=master)
 
 This extension provides [Flysystem](http://flysystem.thephpleague.com/) integration for the Yii framework.
+
+**This extension is under heavy development and not yet ready for production use...**
 
 ## Installation
 
