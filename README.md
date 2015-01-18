@@ -97,6 +97,43 @@ return [
 ];
 ```
 
+### Dropbox connector
+
+Either run
+
+```bash
+$ php composer.phar require dropbox/dropbox-sdk:~1.1.1
+```
+
+or add
+
+```
+"dropbox/dropbox-sdk": "~1.1.1"
+```
+
+to the `require` section of your `composer.json` file and configure `connectors` as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'flysystem' => [
+            //...
+            'connectors' => [
+                //...
+                'dropbox' => [
+                    'class' => 'creocoder\flysystem\adapters\DropboxConnector',
+                    'token' => 'your-token',
+                    'app' => 'your-app',
+                    // 'prefix' => 'your-prefix',
+                ],
+            ],
+        ],
+    ],
+];
+```
+
 ## Usage
 
 TBD.
