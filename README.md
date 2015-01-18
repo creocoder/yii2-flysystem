@@ -27,7 +27,7 @@ to the `require` section of your `composer.json` file.
 
 ## Configuring
 
-Configure flysystem application component as follows
+Configure `flysystem` application component as follows
 
 ```php
 return [
@@ -38,6 +38,51 @@ return [
             'class' => 'creocoder\flysystem\FlysystemManager',
             'default' => 'local',
             'connectors' => [
+                //...
+                'local' => [
+                    'class' => 'creocoder\flysystem\adapters\LocalConnector',
+                    'root' => '@webroot/files',
+                ],
+                'null' => [
+                    'class' => 'creocoder\flysystem\adapters\NullConnector',
+                ],
+                'zip' => [
+                    'class' => 'creocoder\flysystem\adapters\ZipConnector',
+                    'location' => '@webroot/files/archive.zip',
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+### Amazon S3 connector
+
+Either run
+
+```bash
+$ php composer.phar require aws/aws-sdk-php:~2.4
+```
+
+or add
+
+```
+"aws/aws-sdk-php": "~2.4"
+```
+
+to the `require` section of your `composer.json` file.
+
+Configure `connectors` as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'flysystem' => [
+            //...
+            'connectors' => [
+                //...
                 'awss3' => [
                     'class' => 'creocoder\flysystem\adapters\AwsS3Connector',
                     'key' => 'your-key',
@@ -47,17 +92,6 @@ return [
                     // 'baseUrl' => 'your-base-url',
                     // 'prefix' => 'your-prefix',
                     // 'options' => [],
-                ],
-                'local' => [
-                    'class' => 'creocoder\flysystem\adapters\LocalConnector',
-                    'root' => '@webroot/files'
-                ],
-                'null' => [
-                    'class' => 'creocoder\flysystem\adapters\NullConnector',
-                ],
-                'zip' => [
-                    'class' => 'creocoder\flysystem\adapters\ZipConnector',
-                    'location' => '@webroot/files/archive.zip'
                 ],
             ],
         ],
