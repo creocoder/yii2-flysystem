@@ -70,9 +70,7 @@ or add
 "aws/aws-sdk-php": "~2.4"
 ```
 
-to the `require` section of your `composer.json` file.
-
-Configure `connectors` as follows
+to the `require` section of your `composer.json` file and configure `connectors` as follows
 
 ```php
 return [
