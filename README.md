@@ -134,6 +134,46 @@ return [
 ];
 ```
 
+### Rackspace connector
+
+Either run
+
+```bash
+$ php composer.phar require rackspace/php-opencloud:~1.10.0
+```
+
+or add
+
+```
+"rackspace/php-opencloud": "~1.10.0"
+```
+
+to the `require` section of your `composer.json` file and configure `connectors` as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'flysystem' => [
+            //...
+            'connectors' => [
+                //...
+                'rackspace' => [
+                    'class' => 'creocoder\flysystem\adapters\RackspaceConnector',
+                    'endpoint' => 'your-endpoint',
+                    'region' => 'your-region',
+                    'username' => 'your-username',
+                    'apiKey' => 'your-api-key',
+                    'container' => 'your-container',
+                    // 'prefix' => 'your-prefix',
+                ],
+            ],
+        ],
+    ],
+];
+```
+
 ## Usage
 
 TBD.
