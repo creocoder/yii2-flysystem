@@ -65,10 +65,13 @@ class FlysystemManager extends Component
      * Set the default adapter name.
      *
      * @param string $name
+     * @return static
      */
     public function setDefault($name)
     {
         $this->_default = $name;
+
+        return $this;
     }
 
     /**
