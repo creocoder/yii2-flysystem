@@ -9,6 +9,7 @@ namespace creocoder\flysystem\adapters;
 
 use League\Flysystem\Adapter\Local;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\base\Object;
 
 /**
@@ -21,14 +22,18 @@ class LocalConnector extends Object implements ConnectorInterface
     /**
      * @var string
      */
-    public $path;
+    public $root;
 
     /**
      * @inheritdoc
      */
     public function init()
     {
-        $this->path = Yii::getAlias($this->path);
+        if ($this->root === null) {
+            throw new InvalidConfigException('The "root" property must be set.');
+        }
+
+        $this->root = Yii::getAlias($this->root);
     }
 
     /**
@@ -38,6 +43,6 @@ class LocalConnector extends Object implements ConnectorInterface
      */
     public function connect()
     {
-        return new Local($this->path);
+        return new Local($this->root);
     }
 }
