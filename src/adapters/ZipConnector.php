@@ -9,6 +9,7 @@ namespace creocoder\flysystem\adapters;
 
 use League\Flysystem\Adapter\Zip;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\base\Object;
 
 /**
@@ -21,14 +22,18 @@ class ZipConnector extends Object implements ConnectorInterface
     /**
      * @var string
      */
-    public $path;
+    public $location;
 
     /**
      * @inheritdoc
      */
     public function init()
     {
-        $this->path = Yii::getAlias($this->path);
+        if ($this->location === null) {
+            throw new InvalidConfigException('The "location" property must be set.');
+        }
+
+        $this->location = Yii::getAlias($this->location);
     }
 
     /**
@@ -38,6 +43,6 @@ class ZipConnector extends Object implements ConnectorInterface
      */
     public function connect()
     {
-        return new Zip($this->path);
+        return new Zip($this->location);
     }
 }
