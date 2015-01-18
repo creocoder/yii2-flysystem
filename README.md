@@ -38,16 +38,26 @@ return [
             'class' => 'creocoder\flysystem\FlysystemManager',
             'default' => 'local',
             'connectors' => [
+                'awss3' => [
+                    'class' => 'creocoder\flysystem\adapters\AwsS3Connector',
+                    'key' => 'your-key',
+                    'secret' => 'your-secret',
+                    'bucket' => 'your-bucket',
+                    // 'region' => 'your-region',
+                    // 'baseUrl' => 'your-base-url',
+                    // 'prefix' => 'your-prefix',
+                    // 'options' => [],
+                ],
                 'local' => [
                     'class' => 'creocoder\flysystem\adapters\LocalConnector',
-                    'path' => '@webroot/files',
+                    'root' => 'your-root', // for example '@webroot/files'
                 ],
                 'null' => [
                     'class' => 'creocoder\flysystem\adapters\NullConnector',
                 ],
                 'zip' => [
                     'class' => 'creocoder\flysystem\adapters\ZipConnector',
-                    'path' => '@webroot/files',
+                    'location' => 'your-location', // for example '@webroot/files/archive.zip'
                 ],
             ],
         ],
