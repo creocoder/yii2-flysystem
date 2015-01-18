@@ -17,7 +17,7 @@ interface ConnectorInterface
     /**
      * Establish a connection.
      *
-     * @return object
+     * @return \League\Flysystem\AdapterInterface
      */
     public function connect();
 }
