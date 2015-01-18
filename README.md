@@ -50,14 +50,14 @@ return [
                 ],
                 'local' => [
                     'class' => 'creocoder\flysystem\adapters\LocalConnector',
-                    'root' => 'your-root', // for example '@webroot/files'
+                    'root' => '@webroot/files'
                 ],
                 'null' => [
                     'class' => 'creocoder\flysystem\adapters\NullConnector',
                 ],
                 'zip' => [
                     'class' => 'creocoder\flysystem\adapters\ZipConnector',
-                    'location' => 'your-location', // for example '@webroot/files/archive.zip'
+                    'location' => '@webroot/files/archive.zip'
                 ],
             ],
         ],
