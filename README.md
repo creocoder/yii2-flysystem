@@ -4,6 +4,7 @@
 [![Code Quality](https://img.shields.io/scrutinizer/g/creocoder/yii2-flysystem/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/creocoder/yii2-flysystem/?branch=master)
 
 This extension provides [Flysystem](http://flysystem.thephpleague.com/) integration for the Yii framework.
+[Flysystem](http://flysystem.thephpleague.com/) is a filesystem abstraction which allows you to easily swap out a local filesystem for a remote one.
 
 ## Installation
 
