@@ -5,8 +5,6 @@
 
 This extension provides [Flysystem](http://flysystem.thephpleague.com/) integration for the Yii framework.
 
-*This extension is under heavy development and not yet ready for production use...*
-
 ## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
@@ -176,4 +174,112 @@ return [
 
 ## Usage
 
-TBD.
+### Writing files
+
+To write file
+
+```php
+Yii::$app->flysystem->write('filename.ext', 'contents');
+```
+
+### Updating files
+
+To update file
+
+```php
+Yii::$app->flysystem->update('filename.ext', 'contents');
+```
+
+### Writing or updating files
+
+To write or update file
+
+```php
+Yii::$app->flysystem->put('filename.ext', 'contents');
+```
+
+### Reading files
+
+To read file
+
+```php
+$contents = Yii::$app->flysystem->read('filename.ext');
+```
+
+### Checking if a file exists
+
+To check if a file exists
+
+```php
+$exists = Yii::$app->flysystem->has('filename.ext');
+```
+
+### Deleting files
+
+To delete file
+
+```php
+Yii::$app->flysystem->delete('filename.ext');
+```
+
+### Reading and deleting files
+
+To read and delete file
+
+```php
+$contents = Yii::$app->flysystem->readAndDelete('filename.ext');
+```
+
+### Renaming files
+
+To rename file
+
+```php
+Yii::$app->flysystem->rename('filename.ext', 'newname.ext');
+```
+
+### Getting files mimetype
+
+To get file mimetype
+
+```php
+$mimetype = Yii::$app->flysystem->getMimetype('filename.ext');
+```
+
+### Getting files timestamp
+
+To get file timestamp
+
+```php
+$timestamp = Yii::$app->flysystem->getTimestamp('filename.ext');
+```
+
+### Getting files size
+
+To get file size
+
+```php
+$timestamp = Yii::$app->flysystem->getSize('filename.ext');
+```
+
+### Creating directories
+
+To create directory
+
+```php
+Yii::$app->flysystem->createDir('path/to/directory');
+```
+
+Directories are also made implicitly when writing to a deeper path
+
+```php
+Yii::$app->flysystem->write('path/to/filename.ext');
+```
+
+### Deleting directories
+
+To delete directory
+
+```php
+Yii::$app->flysystem->deleteDir('path/to/filename.ext');
+```
