@@ -41,14 +41,14 @@ return [
                 //...
                 'local' => [
                     'class' => 'creocoder\flysystem\adapters\LocalConnector',
-                    'root' => '@webroot/files',
+                    'path' => '@webroot/files',
                 ],
                 'null' => [
                     'class' => 'creocoder\flysystem\adapters\NullConnector',
                 ],
                 'zip' => [
                     'class' => 'creocoder\flysystem\adapters\ZipConnector',
-                    'location' => '@webroot/files/archive.zip',
+                    'path' => '@webroot/files/archive.zip',
                 ],
             ],
         ],

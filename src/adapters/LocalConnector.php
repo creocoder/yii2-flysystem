@@ -22,18 +22,18 @@ class LocalConnector extends Object implements ConnectorInterface
     /**
      * @var string
      */
-    public $root;
+    public $path;
 
     /**
      * @inheritdoc
      */
     public function init()
     {
-        if ($this->root === null) {
-            throw new InvalidConfigException('The "root" property must be set.');
+        if ($this->path === null) {
+            throw new InvalidConfigException('The "path" property must be set.');
         }
 
-        $this->root = Yii::getAlias($this->root);
+        $this->path = Yii::getAlias($this->path);
     }
 
     /**
@@ -43,6 +43,6 @@ class LocalConnector extends Object implements ConnectorInterface
      */
     public function connect()
     {
-        return new Local($this->root);
+        return new Local($this->path);
     }
 }

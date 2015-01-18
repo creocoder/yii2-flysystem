@@ -22,18 +22,18 @@ class ZipConnector extends Object implements ConnectorInterface
     /**
      * @var string
      */
-    public $location;
+    public $path;
 
     /**
      * @inheritdoc
      */
     public function init()
     {
-        if ($this->location === null) {
-            throw new InvalidConfigException('The "location" property must be set.');
+        if ($this->path === null) {
+            throw new InvalidConfigException('The "path" property must be set.');
         }
 
-        $this->location = Yii::getAlias($this->location);
+        $this->path = Yii::getAlias($this->path);
     }
 
     /**
@@ -43,6 +43,6 @@ class ZipConnector extends Object implements ConnectorInterface
      */
     public function connect()
     {
-        return new Zip($this->location);
+        return new Zip($this->path);
     }
 }
