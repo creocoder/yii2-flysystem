@@ -123,6 +123,7 @@ class FlysystemManager extends Component
         $name = $name ?: $this->getDefault();
 
         if (!isset($this->_connections[$name])) {
+            /* @var \creocoder\flysystem\adapters\ConnectorInterface $connector */
             $connector = $this->getConnectorsLocator()->get($name);
             $this->_connections[$name] = new Filesystem($connector->connect());
         }
