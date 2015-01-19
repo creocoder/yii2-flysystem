@@ -100,13 +100,13 @@ TBD.
 Either run
 
 ```bash
-$ php composer.phar require league/flysystem-dropbox:dev-master
+$ php composer.phar require creocoder/yii2-flysystem-dropbox:dev-master
 ```
 
 or add
 
 ```
-"league/flysystem-dropbox": "dev-master"
+"creocoder/yii2-flysystem-dropbox": "dev-master"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -121,7 +121,7 @@ return [
             'connectors' => [
                 //...
                 'dropbox' => [
-                    'class' => 'creocoder\flysystem\connectors\DropboxConnector',
+                    'class' => 'creocoder\flysystem\dropbox\DropboxConnector',
                     'token' => 'your-token',
                     'app' => 'your-app',
                     // 'prefix' => 'your-prefix',
