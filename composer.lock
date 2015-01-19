@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "836f5b33a078ac652a51414591a05165",
+    "hash": "0c7efacf93cab4d4aa89ca111f4e6436",
     "packages": [
         {
             "name": "bower-asset/jquery",
@@ -266,16 +266,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.0-alpha1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "c0afa9513c0e555a607652cb56f81bd991f295f3"
+                "reference": "f705d26e1a6c879e4278d4bc88422ea2a8a792af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c0afa9513c0e555a607652cb56f81bd991f295f3",
-                "reference": "c0afa9513c0e555a607652cb56f81bd991f295f3",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f705d26e1a6c879e4278d4bc88422ea2a8a792af",
+                "reference": "f705d26e1a6c879e4278d4bc88422ea2a8a792af",
                 "shasum": ""
             },
             "require": {
@@ -293,16 +293,17 @@
             },
             "suggest": {
                 "ext-fileinfo": "Required for MimeType",
-                "league/event": "Required for EventableFilesystem",
                 "league/flysystem-aws-s3-v2": "Use S3 storage with AWS SDK v2",
                 "league/flysystem-aws-s3-v3": "Use S3 storage with AWS SDK v3",
                 "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
                 "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
                 "league/flysystem-copy": "Allows you to use Copy.com storage",
                 "league/flysystem-dropbox": "Use Dropbox storage",
+                "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
                 "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
                 "league/flysystem-sftp": "Allows SFTP server storage via phpseclib",
                 "league/flysystem-webdav": "Allows you to use WebDAV storage",
+                "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
                 "predis/predis": "Allows you to use Predis for caching"
             },
             "type": "library",
@@ -344,7 +345,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-01-18 00:19:19"
+            "time": "2015-01-19 08:19:58"
         },
         {
             "name": "yiisoft/yii2",
@@ -489,7 +490,7 @@
     "stability-flags": {
         "league/flysystem": 20
     },
-    "prefer-stable": true,
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
