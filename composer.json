@@ -22,5 +22,6 @@
             "creocoder\\flysystem\\": "src"
         }
     },
-    "min-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
