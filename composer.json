@@ -22,6 +22,9 @@
             "creocoder\\flysystem\\": "src"
         }
     },
+    "suggest": {
+        "creocoder/yii2-flysystem-ziparchive": "Allow you to use ZipArchive connector"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
