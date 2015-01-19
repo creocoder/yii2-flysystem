@@ -50,20 +50,18 @@ return [
 ];
 ```
 
-### Amazon S3 connector
-
-#### AWS SDK V2
+### AWS S3 SDK v2 connector
 
 Either run
 
 ```bash
-$ php composer.phar require league/flysystem-aws-s3-v2:dev-master
+$ php composer.phar require creocoder/yii2-flysystem-aws-s3-v2:dev-master
 ```
 
 or add
 
 ```
-"league/flysystem-aws-s3-v2": "dev-master"
+"creocoder/yii2-flysystem-aws-s3-v2": "dev-master"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -78,7 +76,7 @@ return [
             'connectors' => [
                 //...
                 'awss3' => [
-                    'class' => 'creocoder\flysystem\connectors\AwsS3V2Connector',
+                    'class' => 'creocoder\flysystem\awss3v2\AwsS3Connector',
                     'key' => 'your-key',
                     'secret' => 'your-secret',
                     'bucket' => 'your-bucket',
@@ -93,25 +91,9 @@ return [
 ];
 ```
 
-#### AWS SDK V3
+### AWS S3 SDK v3 connector
 
-Either run
-
-```bash
-$ php composer.phar require league/flysystem-aws-s3-v3:dev-master
-```
-
-or add
-
-```
-"league/flysystem-aws-s3-v3": "dev-master"
-```
-
-to the `require` section of your `composer.json` file and configure `connectors` as follows
-
-```php
-// To be detailed.
-```
+TBD.
 
 ### Dropbox connector
 
