@@ -15,21 +15,18 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "league/flysystem": "~0.5.12"
+        "league/flysystem": "~1.0-alpha"
     },
     "require-dev": {
-        "aws/aws-sdk-php": "~2.4",
-        "barracuda/copy": "~1.1.4",
-        "dropbox/dropbox-sdk": "~1.1.1",
-        "rackspace/php-opencloud": "~1.10.0",
-        "sabre/dav": "~2.0.2"
-    },
-    "suggest": {
-        "aws/aws-sdk-php": "Enables the aws connector.",
-        "barracuda/copy": "Enables the copy connector.",
-        "dropbox/dropbox-sdk": "Enables the dropbox connector.",
-        "rackspace/php-opencloud": "Enables the rackspace connector.",
-        "sabre/dav": "Enables the webdav connector."
+        "league/flysystem-eventable-filesystem": "dev-master",
+        "league/flysystem-rackspace": "dev-master",
+        "league/flysystem-copy": "dev-master",
+        "league/flysystem-webdav": "dev-master",
+        "league/flysystem-aws-s3-v2": "dev-master",
+        "league/flysystem-dropbox": "dev-master",
+        "league/flysystem-cached-adapter": "dev-master",
+        "league/flysystem-sftp": "dev-master",
+        "league/flysystem-ziparchive": "dev-master"
     },
     "autoload": {
         "psr-4": {
