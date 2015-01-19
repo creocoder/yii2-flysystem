@@ -7,8 +7,8 @@
 
 namespace creocoder\flysystem\adapters;
 
-use League\Flysystem\Adapter\Rackspace;
-use OpenCloud\Rackspace as OpenCloudRackspace;
+use League\Flysystem\Rackspace\RackspaceAdapter;
+use OpenCloud\Rackspace;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Object;
@@ -74,12 +74,12 @@ class RackspaceConnector extends Object implements ConnectorInterface
     /**
      * Establish an adapter connection.
      *
-     * @return Rackspace
+     * @return RackspaceAdapter
      */
     public function connect()
     {
-        return new Rackspace(
-            (new OpenCloudRackspace($this->endpoint, [
+        return new RackspaceAdapter(
+            (new Rackspace($this->endpoint, [
                 'username' => $this->username,
                 'apiKey' => $this->apiKey])
             )->objectStoreService('cloudFiles', $this->region)->getContainer($this->container),
