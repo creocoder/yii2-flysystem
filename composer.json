@@ -15,11 +15,13 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "league/flysystem": "~1.0-alpha"
+        "league/flysystem": "~1.0-dev"
     },
     "autoload": {
         "psr-4": {
             "creocoder\\flysystem\\": "src"
         }
-    }
+    },
+    "min-stability": "dev",
+    "prefer-stable": true
 }
