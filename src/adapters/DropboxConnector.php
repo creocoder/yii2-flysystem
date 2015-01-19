@@ -29,7 +29,7 @@ class DropboxConnector extends Object implements ConnectorInterface
      */
     public $app;
     /**
-     * @var string
+     * @var string|null
      */
     public $prefix;
 

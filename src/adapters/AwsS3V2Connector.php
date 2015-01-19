@@ -41,7 +41,7 @@ class AwsS3V2Connector extends Object implements ConnectorInterface
      */
     public $bucket;
     /**
-     * @var string
+     * @var string|null
      */
     public $prefix;
     /**

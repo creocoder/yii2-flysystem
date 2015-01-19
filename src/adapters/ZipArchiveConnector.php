@@ -24,7 +24,7 @@ class ZipArchiveConnector extends Object implements ConnectorInterface
      */
     public $path;
     /**
-     * @var string
+     * @var string|null
      */
     public $prefix;
 

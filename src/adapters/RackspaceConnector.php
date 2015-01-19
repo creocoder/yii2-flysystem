@@ -41,7 +41,7 @@ class RackspaceConnector extends Object implements ConnectorInterface
      */
     public $container;
     /**
-     * @var string
+     * @var string|null
      */
     public $prefix;
 
