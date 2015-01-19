@@ -7,22 +7,26 @@
 
 namespace creocoder\flysystem\adapters;
 
-use League\Flysystem\Adapter\Zip;
+use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Object;
 
 /**
- * ZipConnector
+ * ZipArchiveConnector
  *
  * @author Alexander Kochetov <creocoder@gmail.com>
  */
-class ZipConnector extends Object implements ConnectorInterface
+class ZipArchiveConnector extends Object implements ConnectorInterface
 {
     /**
      * @var string
      */
     public $path;
+    /**
+     * @var string
+     */
+    public $prefix;
 
     /**
      * @inheritdoc
@@ -39,10 +43,10 @@ class ZipConnector extends Object implements ConnectorInterface
     /**
      * Establish an adapter connection.
      *
-     * @return Zip
+     * @return ZipArchiveAdapter
      */
     public function connect()
     {
-        return new Zip($this->path);
+        return new ZipArchiveAdapter($this->path, null, $this->prefix);
     }
 }
