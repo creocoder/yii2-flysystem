@@ -44,10 +44,6 @@ return [
                 'null' => [
                     'class' => 'creocoder\flysystem\adapters\NullConnector',
                 ],
-                'zip' => [
-                    'class' => 'creocoder\flysystem\adapters\ZipConnector',
-                    'path' => '@webroot/files/archive.zip',
-                ],
             ],
         ],
     ],
@@ -56,16 +52,18 @@ return [
 
 ### Amazon S3 connector
 
+#### AWS SDK V2
+
 Either run
 
 ```bash
-$ php composer.phar require aws/aws-sdk-php:~2.4
+$ php composer.phar require league/flysystem-aws-s3-v2:dev-master
 ```
 
 or add
 
 ```
-"aws/aws-sdk-php": "~2.4"
+"league/flysystem-aws-s3-v2": "dev-master"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -80,7 +78,7 @@ return [
             'connectors' => [
                 //...
                 'awss3' => [
-                    'class' => 'creocoder\flysystem\adapters\AwsS3Connector',
+                    'class' => 'creocoder\flysystem\adapters\AwsS3V2Connector',
                     'key' => 'your-key',
                     'secret' => 'your-secret',
                     'bucket' => 'your-bucket',
@@ -95,18 +93,38 @@ return [
 ];
 ```
 
-### Dropbox connector
+#### AWS SDK V3
 
 Either run
 
 ```bash
-$ php composer.phar require dropbox/dropbox-sdk:~1.1.1
+$ php composer.phar require league/flysystem-aws-s3-v3:dev-master
 ```
 
 or add
 
 ```
-"dropbox/dropbox-sdk": "~1.1.1"
+"league/flysystem-aws-s3-v3": "dev-master"
+```
+
+to the `require` section of your `composer.json` file and configure `connectors` as follows
+
+```php
+// To be detailed.
+```
+
+### Dropbox connector
+
+Either run
+
+```bash
+$ php composer.phar require league/flysystem-dropbox:dev-master
+```
+
+or add
+
+```
+"league/flysystem-dropbox": "dev-master"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -137,13 +155,13 @@ return [
 Either run
 
 ```bash
-$ php composer.phar require rackspace/php-opencloud:~1.10.0
+$ php composer.phar require league/flysystem-rackspace:dev-master
 ```
 
 or add
 
 ```
-"rackspace/php-opencloud": "~1.10.0"
+"league/flysystem-rackspace": "dev-master"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -164,6 +182,42 @@ return [
                     'username' => 'your-username',
                     'apiKey' => 'your-api-key',
                     'container' => 'your-container',
+                    // 'prefix' => 'your-prefix',
+                ],
+            ],
+        ],
+    ],
+];
+```
+
+### ZipArchive connector
+
+Either run
+
+```bash
+$ php composer.phar require league/flysystem-ziparchive:dev-master
+```
+
+or add
+
+```
+"league/flysystem-ziparchive": "dev-master"
+```
+
+to the `require` section of your `composer.json` file and configure `connectors` as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'flysystem' => [
+            //...
+            'connectors' => [
+                //...
+                'zip' => [
+                    'class' => 'creocoder\flysystem\adapters\ZipArchiveConnector',
+                    'path' => '@webroot/files/archive.zip',
                     // 'prefix' => 'your-prefix',
                 ],
             ],
