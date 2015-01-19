@@ -8,17 +8,17 @@
 namespace creocoder\flysystem\adapters;
 
 use Aws\S3\S3Client;
-use League\Flysystem\Adapter\AwsS3;
+use League\Flysystem\AwsS3V2\AwsS3Adapter;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Object;
 
 /**
- * AwsS3Connector
+ * AwsS3V2Connector
  *
  * @author Alexander Kochetov <creocoder@gmail.com>
  */
-class AwsS3Connector extends Object implements ConnectorInterface
+class AwsS3V2Connector extends Object implements ConnectorInterface
 {
     /**
      * @var string
@@ -70,7 +70,7 @@ class AwsS3Connector extends Object implements ConnectorInterface
     /**
      * Establish an adapter connection.
      *
-     * @return AwsS3
+     * @return AwsS3Adapter
      */
     public function connect()
     {
@@ -84,6 +84,6 @@ class AwsS3Connector extends Object implements ConnectorInterface
             $config['base_url'] = $this->baseUrl;
         }
 
-        return new AwsS3(S3Client::factory($config), $this->bucket, $this->prefix, $this->options);
+        return new AwsS3Adapter(S3Client::factory($config), $this->bucket, $this->prefix, $this->options);
     }
 }
