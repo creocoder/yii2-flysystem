@@ -87,44 +87,21 @@ class FtpConnector extends Object implements ConnectorInterface
     {
         $config = ['host' => $this->host];
 
-        if ($this->port !== null) {
-            $config['port'] = $this->port;
-        }
-
-        if ($this->username !== null) {
-            $config['username'] = $this->username;
-        }
-
-        if ($this->password !== null) {
-            $config['password'] = $this->password;
-        }
-
-        if ($this->root !== null) {
-            $config['root'] = $this->root;
-        }
-
-        if ($this->passive !== null) {
-            $config['passive'] = $this->passive;
-        }
-
-        if ($this->ssl !== null) {
-            $config['ssl'] = $this->ssl;
-        }
-
-        if ($this->timeout !== null) {
-            $config['timeout'] = $this->timeout;
-        }
-
-        if ($this->permPrivate !== null) {
-            $config['permPrivate'] = $this->permPrivate;
-        }
-
-        if ($this->permPublic !== null) {
-            $config['permPublic'] = $this->permPublic;
-        }
-
-        if ($this->transferMode !== null) {
-            $config['transferMode'] = $this->transferMode;
+        foreach ([
+            'port',
+            'username',
+            'password',
+            'root',
+            'passive',
+            'ssl',
+            'timeout',
+            'permPrivate',
+            'permPublic',
+            'transferMode',
+        ] as $name) {
+            if ($this->$name !== null) {
+                $config[$name] = $this->$name;
+            }
         }
 
         return new Ftp($config);
