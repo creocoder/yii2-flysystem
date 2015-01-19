@@ -15,7 +15,7 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "league/flysystem": "1.0.0-alpha1"
+        "league/flysystem": "~1.0-alpha"
     },
     "autoload": {
         "psr-4": {
