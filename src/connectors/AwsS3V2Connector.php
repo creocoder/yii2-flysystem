@@ -5,7 +5,7 @@
  * @license http://opensource.org/licenses/BSD-3-Clause
  */
 
-namespace creocoder\flysystem\adapters;
+namespace creocoder\flysystem\connectors;
 
 use Aws\S3\S3Client;
 use League\Flysystem\AwsS3V2\AwsS3Adapter;

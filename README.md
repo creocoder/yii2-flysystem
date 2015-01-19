@@ -38,11 +38,11 @@ return [
             'connectors' => [
                 //...
                 'local' => [
-                    'class' => 'creocoder\flysystem\adapters\LocalConnector',
+                    'class' => 'creocoder\flysystem\connectors\LocalConnector',
                     'path' => '@webroot/files',
                 ],
                 'null' => [
-                    'class' => 'creocoder\flysystem\adapters\NullConnector',
+                    'class' => 'creocoder\flysystem\connectors\NullConnector',
                 ],
             ],
         ],
@@ -78,7 +78,7 @@ return [
             'connectors' => [
                 //...
                 'awss3' => [
-                    'class' => 'creocoder\flysystem\adapters\AwsS3V2Connector',
+                    'class' => 'creocoder\flysystem\connectors\AwsS3V2Connector',
                     'key' => 'your-key',
                     'secret' => 'your-secret',
                     'bucket' => 'your-bucket',
@@ -139,7 +139,7 @@ return [
             'connectors' => [
                 //...
                 'dropbox' => [
-                    'class' => 'creocoder\flysystem\adapters\DropboxConnector',
+                    'class' => 'creocoder\flysystem\connectors\DropboxConnector',
                     'token' => 'your-token',
                     'app' => 'your-app',
                     // 'prefix' => 'your-prefix',
@@ -176,7 +176,7 @@ return [
             'connectors' => [
                 //...
                 'rackspace' => [
-                    'class' => 'creocoder\flysystem\adapters\RackspaceConnector',
+                    'class' => 'creocoder\flysystem\connectors\RackspaceConnector',
                     'endpoint' => 'your-endpoint',
                     'region' => 'your-region',
                     'username' => 'your-username',
@@ -216,7 +216,7 @@ return [
             'connectors' => [
                 //...
                 'zip' => [
-                    'class' => 'creocoder\flysystem\adapters\ZipArchiveConnector',
+                    'class' => 'creocoder\flysystem\connectors\ZipArchiveConnector',
                     'path' => '@webroot/files/archive.zip',
                     // 'prefix' => 'your-prefix',
                 ],

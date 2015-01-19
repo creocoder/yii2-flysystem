@@ -5,7 +5,7 @@
  * @license http://opensource.org/licenses/BSD-3-Clause
  */
 
-namespace creocoder\flysystem\adapters;
+namespace creocoder\flysystem\connectors;
 
 use League\Flysystem\Adapter\Local;
 use Yii;
