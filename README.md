@@ -137,13 +137,13 @@ return [
 Either run
 
 ```bash
-$ php composer.phar require league/flysystem-rackspace:dev-master
+$ php composer.phar require creocoder/yii2-flysystem-rackspace:dev-master
 ```
 
 or add
 
 ```
-"league/flysystem-rackspace": "dev-master"
+"creocoder/yii2-flysystem-rackspace": "dev-master"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -158,7 +158,7 @@ return [
             'connectors' => [
                 //...
                 'rackspace' => [
-                    'class' => 'creocoder\flysystem\connectors\RackspaceConnector',
+                    'class' => 'creocoder\flysystem\rackspace\RackspaceConnector',
                     'endpoint' => 'your-endpoint',
                     'region' => 'your-region',
                     'username' => 'your-username',
