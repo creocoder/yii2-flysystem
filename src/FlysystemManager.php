@@ -10,6 +10,7 @@ namespace creocoder\flysystem;
 use League\Flysystem\Filesystem;
 use Yii;
 use yii\base\Component;
+use yii\base\InvalidConfigException;
 use yii\di\ServiceLocator;
 
 /**
@@ -56,6 +57,20 @@ class FlysystemManager extends Component
      * @var \League\Flysystem\FilesystemInterface[]
      */
     private $_connections = [];
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        if ($this->getDefault() === null) {
+            throw new InvalidConfigException('The "default" property must be set.');
+        }
+
+        if ($this->getConnectorsLocator() === null) {
+            throw new InvalidConfigException('The "connectors" property must be set.');
+        }
+    }
 
     /**
      * Set the default adapter name.
