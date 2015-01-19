@@ -8,7 +8,7 @@
 namespace creocoder\flysystem\adapters;
 
 use Dropbox\Client;
-use League\Flysystem\Adapter\Dropbox;
+use League\Flysystem\Dropbox\DropboxAdapter;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Object;
@@ -50,10 +50,10 @@ class DropboxConnector extends Object implements ConnectorInterface
     /**
      * Establish an adapter connection.
      *
-     * @return Dropbox
+     * @return DropboxAdapter
      */
     public function connect()
     {
-        return new Dropbox(new Client($this->token, $this->app), $this->prefix);
+        return new DropboxAdapter(new Client($this->token, $this->app), $this->prefix);
     }
 }
