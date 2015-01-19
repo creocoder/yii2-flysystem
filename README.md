@@ -195,13 +195,13 @@ return [
 Either run
 
 ```bash
-$ php composer.phar require league/flysystem-ziparchive:dev-master
+$ php composer.phar require creocoder/yii2-flysystem-ziparchive:dev-master
 ```
 
 or add
 
 ```
-"league/flysystem-ziparchive": "dev-master"
+"creocoder/yii2-flysystem-ziparchive": "dev-master"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -216,7 +216,7 @@ return [
             'connectors' => [
                 //...
                 'zip' => [
-                    'class' => 'creocoder\flysystem\connectors\ZipArchiveConnector',
+                    'class' => 'creocoder\flysystem\ziparchive\ZipArchiveConnector',
                     'path' => '@webroot/files/archive.zip',
                     // 'prefix' => 'your-prefix',
                 ],
