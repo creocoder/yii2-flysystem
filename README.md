@@ -37,6 +37,20 @@ return [
             'default' => 'local',
             'connectors' => [
                 //...
+                'ftp' => [
+                    'class' => 'creocoder\flysystem\connectors\FtpConnector',
+                    'host' => 'ftp.example.com',
+                    // 'port' => 21,
+                    // 'username' => 'your-username',
+                    // 'password' => 'your-password',
+                    // 'root' => '/path/to/root',
+                    // 'passive' => false,
+                    // 'ssl' => true,
+                    // 'timeout' => 60,
+                    // 'permPrivate' => 0700,
+                    // 'permPublic' => 0744,
+                    // 'transferMode' => FTP_TEXT,
+                ],
                 'local' => [
                     'class' => 'creocoder\flysystem\connectors\LocalConnector',
                     'path' => '@webroot/files',
