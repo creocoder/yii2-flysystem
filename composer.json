@@ -23,6 +23,7 @@
         }
     },
     "suggest": {
+        "creocoder/yii2-flysystem-aws-s3-v2": "Allow you to use AWS S3 SDK v2 connector",
         "creocoder/yii2-flysystem-ziparchive": "Allow you to use ZipArchive connector"
     },
     "minimum-stability": "dev",
