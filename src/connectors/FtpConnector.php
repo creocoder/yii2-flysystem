@@ -85,9 +85,10 @@ class FtpConnector extends Object implements ConnectorInterface
      */
     public function connect()
     {
-        $config = ['host' => $this->host];
+        $config = [];
 
         foreach ([
+            'host',
             'port',
             'username',
             'password',
