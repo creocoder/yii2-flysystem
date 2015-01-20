@@ -112,7 +112,44 @@ return [
 
 Connector home: https://github.com/creocoder/yii2-flysystem-aws-s3-v3
 
-TBD.
+Either run
+
+```bash
+$ php composer.phar require creocoder/yii2-flysystem-aws-s3-v3:dev-master
+```
+
+or add
+
+```
+"creocoder/yii2-flysystem-aws-s3-v3": "dev-master"
+```
+
+to the `require` section of your `composer.json` file and configure `connectors` as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'flysystem' => [
+            //...
+            'connectors' => [
+                //...
+                'awss3' => [
+                    'class' => 'creocoder\flysystem\awss3v3\AwsS3Connector',
+                    'key' => 'your-key',
+                    'secret' => 'your-secret',
+                    'bucket' => 'your-bucket',
+                    // 'region' => 'your-region',
+                    // 'endpoint' => 'your-endpoint',
+                    // 'prefix' => 'your-prefix',
+                    // 'options' => [],
+                ],
+            ],
+        ],
+    ],
+];
+```
 
 ### Copy connector
 
