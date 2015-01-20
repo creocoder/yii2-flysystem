@@ -141,7 +141,7 @@ return [
             //...
             'connectors' => [
                 //...
-                'dropbox' => [
+                'copy' => [
                     'class' => 'creocoder\flysystem\copy\CopyConnector',
                     'consumerKey' => 'your-consumer-key',
                     'consumerSecret' => 'your-consumer-secret',
@@ -263,7 +263,7 @@ return [
             //...
             'connectors' => [
                 //...
-                'dropbox' => [
+                'webdav' => [
                     'class' => 'creocoder\flysystem\webdav\WebDAVConnector',
                     'baseUri' => 'your-base-uri',
                     // 'userName' => 'your-user-name',
