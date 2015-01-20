@@ -236,6 +236,49 @@ return [
 ];
 ```
 
+### WebDAV connector
+
+Connector home: https://github.com/creocoder/yii2-flysystem-webdav
+
+Either run
+
+```bash
+$ php composer.phar require creocoder/yii2-flysystem-webdav:dev-master
+```
+
+or add
+
+```
+"creocoder/yii2-flysystem-webdav": "dev-master"
+```
+
+to the `require` section of your `composer.json` file and configure `connectors` as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'flysystem' => [
+            //...
+            'connectors' => [
+                //...
+                'dropbox' => [
+                    'class' => 'creocoder\flysystem\webdav\WebDAVConnector',
+                    'baseUri' => 'your-base-uri',
+                    // 'userName' => 'your-user-name',
+                    // 'password' => 'your-password',
+                    // 'proxy' => 'your-proxy',
+                    // 'authType' => \Sabre\DAV\Client::AUTH_BASIC,
+                    // 'encoding' => \Sabre\DAV\Client::ENCODING_IDENTITY,
+                    // 'prefix' => 'your-prefix',
+                ],
+            ],
+        ],
+    ],
+];
+```
+
 ### ZipArchive connector
 
 Connector home: https://github.com/creocoder/yii2-flysystem-ziparchive
