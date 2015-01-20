@@ -67,6 +67,8 @@ return [
 
 ### AWS S3 SDK v2 connector
 
+Connector home: https://github.com/creocoder/yii2-flysystem-aws-s3-v2
+
 Either run
 
 ```bash
@@ -108,9 +110,13 @@ return [
 
 ### AWS S3 SDK v3 connector
 
+Connector home: https://github.com/creocoder/yii2-flysystem-aws-s3-v3
+
 TBD.
 
 ### Dropbox connector
+
+Connector home: https://github.com/creocoder/yii2-flysystem-dropbox
 
 Either run
 
@@ -148,6 +154,8 @@ return [
 ```
 
 ### Rackspace connector
+
+Connector home: https://github.com/creocoder/yii2-flysystem-rackspace
 
 Either run
 
@@ -188,6 +196,8 @@ return [
 ```
 
 ### ZipArchive connector
+
+Connector home: https://github.com/creocoder/yii2-flysystem-ziparchive
 
 Either run
 
