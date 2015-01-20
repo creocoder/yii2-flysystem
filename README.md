@@ -114,6 +114,47 @@ Connector home: https://github.com/creocoder/yii2-flysystem-aws-s3-v3
 
 TBD.
 
+### Copy connector
+
+Connector home: https://github.com/creocoder/yii2-flysystem-copy
+
+Either run
+
+```bash
+$ php composer.phar require creocoder/yii2-flysystem-copy:dev-master
+```
+
+or add
+
+```
+"creocoder/yii2-flysystem-copy": "dev-master"
+```
+
+to the `require` section of your `composer.json` file and configure `connectors` as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'flysystem' => [
+            //...
+            'connectors' => [
+                //...
+                'dropbox' => [
+                    'class' => 'creocoder\flysystem\copy\CopyConnector',
+                    'consumerKey' => 'your-consumer-key',
+                    'consumerSecret' => 'your-consumer-secret',
+                    'accessToken' => 'your-access-token',
+                    'tokenSecret' => 'your-token-secret',
+                    // 'prefix' => 'your-prefix',
+                ],
+            ],
+        ],
+    ],
+];
+```
+
 ### Dropbox connector
 
 Connector home: https://github.com/creocoder/yii2-flysystem-dropbox
