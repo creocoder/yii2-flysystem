@@ -1,6 +1,5 @@
 # Flysystem Extension for Yii 2
 
-[![PayPal Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DU3XEJTE665EU)
 [![Code Quality](https://img.shields.io/scrutinizer/g/creocoder/yii2-flysystem/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/creocoder/yii2-flysystem/?branch=master)
 
 This extension provides [Flysystem](http://flysystem.thephpleague.com/) integration for the Yii framework.
@@ -465,3 +464,9 @@ To delete directory
 ```php
 Yii::$app->flysystem->deleteDir('path/to/filename.ext');
 ```
+
+## Donating
+
+Support this project and [others by creocoder](https://gratipay.com/creocoder/) via [gratipay](https://gratipay.com/creocoder/).
+
+[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.svg)](https://gratipay.com/creocoder/)
