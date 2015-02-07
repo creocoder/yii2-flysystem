@@ -12,13 +12,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```bash
-$ php composer.phar require creocoder/yii2-flysystem:dev-master
+$ php composer.phar require creocoder/yii2-flysystem
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem": "dev-master"
+"creocoder/yii2-flysystem": "*"
 ```
 
 to the `require` section of your `composer.json` file.
