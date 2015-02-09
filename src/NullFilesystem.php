@@ -5,25 +5,22 @@
  * @license http://opensource.org/licenses/BSD-3-Clause
  */
 
-namespace creocoder\flysystem\connectors;
+namespace creocoder\flysystem;
 
 use League\Flysystem\Adapter\NullAdapter;
 use Yii;
-use yii\base\Object;
 
 /**
- * NullConnector
+ * NullFilesystem
  *
  * @author Alexander Kochetov <creocoder@gmail.com>
  */
-class NullConnector extends Object implements ConnectorInterface
+class NullFilesystem extends Filesystem
 {
     /**
-     * Establish an adapter connection.
-     *
      * @return NullAdapter
      */
-    public function connect()
+    public function getAdapter()
     {
         return new NullAdapter();
     }

@@ -5,19 +5,18 @@
  * @license http://opensource.org/licenses/BSD-3-Clause
  */
 
-namespace creocoder\flysystem\connectors;
+namespace creocoder\flysystem;
 
 use League\Flysystem\Adapter\Ftp;
 use Yii;
 use yii\base\InvalidConfigException;
-use yii\base\Object;
 
 /**
- * FtpConnector
+ * FtpFilesystem
  *
  * @author Alexander Kochetov <creocoder@gmail.com>
  */
-class FtpConnector extends Object implements ConnectorInterface
+class FtpFilesystem extends Filesystem
 {
     /**
      * @var string
@@ -76,14 +75,14 @@ class FtpConnector extends Object implements ConnectorInterface
         if ($this->root !== null) {
             $this->root = Yii::getAlias($this->root);
         }
+
+        parent::init();
     }
 
     /**
-     * Establish an adapter connection.
-     *
      * @return Ftp
      */
-    public function connect()
+    public function getAdapter()
     {
         $config = [];
 

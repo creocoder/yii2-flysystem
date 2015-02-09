@@ -5,19 +5,18 @@
  * @license http://opensource.org/licenses/BSD-3-Clause
  */
 
-namespace creocoder\flysystem\connectors;
+namespace creocoder\flysystem;
 
 use League\Flysystem\Adapter\Local;
 use Yii;
 use yii\base\InvalidConfigException;
-use yii\base\Object;
 
 /**
- * LocalConnector
+ * LocalFilesystem
  *
  * @author Alexander Kochetov <creocoder@gmail.com>
  */
-class LocalConnector extends Object implements ConnectorInterface
+class LocalFilesystem extends Filesystem
 {
     /**
      * @var string
@@ -34,14 +33,14 @@ class LocalConnector extends Object implements ConnectorInterface
         }
 
         $this->path = Yii::getAlias($this->path);
+
+        parent::init();
     }
 
     /**
-     * Establish an adapter connection.
-     *
      * @return Local
      */
-    public function connect()
+    public function getAdapter()
     {
         return new Local($this->path);
     }
