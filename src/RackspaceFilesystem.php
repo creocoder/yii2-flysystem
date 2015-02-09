@@ -68,6 +68,8 @@ class RackspaceFilesystem extends Filesystem
         if ($this->container === null) {
             throw new InvalidConfigException('The "container" property must be set.');
         }
+
+        parent::init();
     }
 
     /**

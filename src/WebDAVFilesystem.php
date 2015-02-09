@@ -56,6 +56,8 @@ class WebDAVFilesystem extends Filesystem
         if ($this->baseUri === null) {
             throw new InvalidConfigException('The "baseUri" property must be set.');
         }
+
+        parent::init();
     }
 
     /**

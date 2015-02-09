@@ -37,6 +37,8 @@ class ZipArchiveFilesystem extends Filesystem
         }
 
         $this->path = Yii::getAlias($this->path);
+
+        parent::init();
     }
 
     /**

@@ -64,6 +64,8 @@ class AwsS3Filesystem extends Filesystem
         if ($this->bucket === null) {
             throw new InvalidConfigException('The "bucket" property must be set.');
         }
+
+        parent::init();
     }
 
     /**

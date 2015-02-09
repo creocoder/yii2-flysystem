@@ -44,6 +44,8 @@ class DropboxFilesystem extends Filesystem
         if ($this->app === null) {
             throw new InvalidConfigException('The "app" property must be set.');
         }
+
+        parent::init();
     }
 
     /**

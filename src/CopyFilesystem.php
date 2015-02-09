@@ -60,6 +60,8 @@ class CopyFilesystem extends Filesystem
         if ($this->tokenSecret === null) {
             throw new InvalidConfigException('The "tokenSecret" property must be set.');
         }
+
+        parent::init();
     }
 
     /**
