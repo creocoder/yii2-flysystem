@@ -18,7 +18,7 @@ $ composer require creocoder/yii2-flysystem
 or add
 
 ```
-"creocoder/yii2-flysystem": "*"
+"creocoder/yii2-flysystem": "0.2.*"
 ```
 
 to the `require` section of your `composer.json` file.
@@ -85,20 +85,18 @@ return [
 ];
 ```
 
-### AWS S3 SDK v2 filesystem
-
-Filesystem home: https://github.com/creocoder/yii2-flysystem-aws-s3-v2
+### AWS S3 filesystem
 
 Either run
 
 ```bash
-$ composer require creocoder/yii2-flysystem-aws-s3-v2
+$ composer require league/flysystem-aws-s3-v2
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-aws-s3-v2": "*"
+"league/flysystem-aws-s3-v2": "~1.0"
 ```
 
 to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
@@ -109,7 +107,7 @@ return [
     'components' => [
         //...
         'filesystem' => [
-            'class' => 'creocoder\flysystem\awss3v2\AwsS3Filesystem',
+            'class' => 'creocoder\flysystem\AwsS3Filesystem',
             'key' => 'your-key',
             'secret' => 'your-secret',
             'bucket' => 'your-bucket',
@@ -122,57 +120,18 @@ return [
 ];
 ```
 
-### AWS S3 SDK v3 filesystem
-
-Filesystem home: https://github.com/creocoder/yii2-flysystem-aws-s3-v3
-
-Either run
-
-```bash
-$ composer require creocoder/yii2-flysystem-aws-s3-v3
-```
-
-or add
-
-```
-"creocoder/yii2-flysystem-aws-s3-v3": "*"
-```
-
-to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
-
-```php
-return [
-    //...
-    'components' => [
-        //...
-        'filesystem' => [
-            'class' => 'creocoder\flysystem\awss3v3\AwsS3Filesystem',
-            'key' => 'your-key',
-            'secret' => 'your-secret',
-            'bucket' => 'your-bucket',
-            // 'region' => 'your-region',
-            // 'endpoint' => 'your-endpoint',
-            // 'prefix' => 'your-prefix',
-            // 'options' => [],
-        ],
-    ],
-];
-```
-
 ### Copy filesystem
 
-Filesystem home: https://github.com/creocoder/yii2-flysystem-copy
-
 Either run
 
 ```bash
-$ composer require creocoder/yii2-flysystem-copy
+$ composer require league/flysystem-copy
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-copy": "*"
+"league/flysystem-copy": "~1.0"
 ```
 
 to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
@@ -183,7 +142,7 @@ return [
     'components' => [
         //...
         'filesystem' => [
-            'class' => 'creocoder\flysystem\copy\CopyFilesystem',
+            'class' => 'creocoder\flysystem\CopyFilesystem',
             'consumerKey' => 'your-consumer-key',
             'consumerSecret' => 'your-consumer-secret',
             'accessToken' => 'your-access-token',
@@ -196,18 +155,16 @@ return [
 
 ### Dropbox filesystem
 
-Filesystem home: https://github.com/creocoder/yii2-flysystem-dropbox
-
 Either run
 
 ```bash
-$ composer require creocoder/yii2-flysystem-dropbox
+$ composer require league/flysystem-dropbox
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-dropbox": "*"
+"league/flysystem-dropbox": "~1.0"
 ```
 
 to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
@@ -218,7 +175,7 @@ return [
     'components' => [
         //...
         'filesystem' => [
-            'class' => 'creocoder\flysystem\dropbox\DropboxFilesystem',
+            'class' => 'creocoder\flysystem\DropboxFilesystem',
             'token' => 'your-token',
             'app' => 'your-app',
             // 'prefix' => 'your-prefix',
@@ -229,18 +186,16 @@ return [
 
 ### Rackspace filesystem
 
-Filesystem home: https://github.com/creocoder/yii2-flysystem-rackspace
-
 Either run
 
 ```bash
-$ composer require creocoder/yii2-flysystem-rackspace
+$ composer require league/flysystem-rackspace
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-rackspace": "*"
+"league/flysystem-rackspace": "~1.0"
 ```
 
 to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
@@ -251,7 +206,7 @@ return [
     'components' => [
         //...
         'filesystem' => [
-            'class' => 'creocoder\flysystem\rackspace\RackspaceFilesystem',
+            'class' => 'creocoder\flysystem\RackspaceFilesystem',
             'endpoint' => 'your-endpoint',
             'region' => 'your-region',
             'username' => 'your-username',
@@ -265,18 +220,16 @@ return [
 
 ### WebDAV filesystem
 
-Filesystem home: https://github.com/creocoder/yii2-flysystem-webdav
-
 Either run
 
 ```bash
-$ composer require creocoder/yii2-flysystem-webdav
+$ composer require league/flysystem-webdav
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-webdav": "*"
+"league/flysystem-webdav": "~1.0"
 ```
 
 to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
@@ -287,7 +240,7 @@ return [
     'components' => [
         //...
         'filesystem' => [
-            'class' => 'creocoder\flysystem\webdav\WebDAVFilesystem',
+            'class' => 'creocoder\flysystem\WebDAVFilesystem',
             'baseUri' => 'your-base-uri',
             // 'userName' => 'your-user-name',
             // 'password' => 'your-password',
@@ -302,18 +255,16 @@ return [
 
 ### ZipArchive filesystem
 
-Filesystem home: https://github.com/creocoder/yii2-flysystem-ziparchive
-
 Either run
 
 ```bash
-$ composer require creocoder/yii2-flysystem-ziparchive
+$ composer require league/flysystem-ziparchive
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-ziparchive": "*"
+"league/flysystem-ziparchive": "~1.0"
 ```
 
 to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
@@ -324,7 +275,7 @@ return [
     'components' => [
         //...
         'filesystem' => [
-            'class' => 'creocoder\flysystem\ziparchive\ZipArchiveFilesystem',
+            'class' => 'creocoder\flysystem\ZipArchiveFilesystem',
             'path' => '@webroot/files/archive.zip',
             // 'prefix' => 'your-prefix',
         ],
