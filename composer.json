@@ -17,18 +17,17 @@
         "yiisoft/yii2": "~2.0.0",
         "league/flysystem": "~1.0"
     },
+    "require-dev": {
+        "league/flysystem-aws-s3-v2": "~1.0",
+        "league/flysystem-copy": "~1.0",
+        "league/flysystem-dropbox": "~1.0",
+        "league/flysystem-rackspace": "~1.0",
+        "league/flysystem-webdav": "~1.0",
+        "league/flysystem-ziparchive": "~1.0"
+    },
     "autoload": {
         "psr-4": {
             "creocoder\\flysystem\\": "src"
         }
-    },
-    "suggest": {
-        "creocoder/yii2-flysystem-aws-s3-v2": "Allow you to use AWS S3 SDK v2 filesystem",
-        "creocoder/yii2-flysystem-aws-s3-v3": "Allow you to use AWS S3 SDK v3 filesystem",
-        "creocoder/yii2-flysystem-dropbox": "Allow you to use Dropbox filesystem",
-        "creocoder/yii2-flysystem-copy": "Allow you to use Copy filesystem",
-        "creocoder/yii2-flysystem-rackspace": "Allow you to use Rackspace filesystem",
-        "creocoder/yii2-flysystem-webdav": "Allow you to use WebDAV filesystem",
-        "creocoder/yii2-flysystem-ziparchive": "Allow you to use ZipArchive filesystem"
     }
 }
