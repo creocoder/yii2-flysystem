@@ -12,7 +12,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```bash
-$ php composer.phar require creocoder/yii2-flysystem
+$ composer require creocoder/yii2-flysystem
 ```
 
 or add
@@ -71,13 +71,13 @@ Connector home: https://github.com/creocoder/yii2-flysystem-aws-s3-v2
 Either run
 
 ```bash
-$ php composer.phar require creocoder/yii2-flysystem-aws-s3-v2:dev-master
+$ composer require creocoder/yii2-flysystem-aws-s3-v2
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-aws-s3-v2": "dev-master"
+"creocoder/yii2-flysystem-aws-s3-v2": "*"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -114,13 +114,13 @@ Connector home: https://github.com/creocoder/yii2-flysystem-aws-s3-v3
 Either run
 
 ```bash
-$ php composer.phar require creocoder/yii2-flysystem-aws-s3-v3:dev-master
+$ composer require creocoder/yii2-flysystem-aws-s3-v3
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-aws-s3-v3": "dev-master"
+"creocoder/yii2-flysystem-aws-s3-v3": "*"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -157,13 +157,13 @@ Connector home: https://github.com/creocoder/yii2-flysystem-copy
 Either run
 
 ```bash
-$ php composer.phar require creocoder/yii2-flysystem-copy:dev-master
+$ composer require creocoder/yii2-flysystem-copy
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-copy": "dev-master"
+"creocoder/yii2-flysystem-copy": "*"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -198,13 +198,13 @@ Connector home: https://github.com/creocoder/yii2-flysystem-dropbox
 Either run
 
 ```bash
-$ php composer.phar require creocoder/yii2-flysystem-dropbox:dev-master
+$ composer require creocoder/yii2-flysystem-dropbox
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-dropbox": "dev-master"
+"creocoder/yii2-flysystem-dropbox": "*"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -237,13 +237,13 @@ Connector home: https://github.com/creocoder/yii2-flysystem-rackspace
 Either run
 
 ```bash
-$ php composer.phar require creocoder/yii2-flysystem-rackspace:dev-master
+$ composer require creocoder/yii2-flysystem-rackspace
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-rackspace": "dev-master"
+"creocoder/yii2-flysystem-rackspace": "*"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -279,13 +279,13 @@ Connector home: https://github.com/creocoder/yii2-flysystem-webdav
 Either run
 
 ```bash
-$ php composer.phar require creocoder/yii2-flysystem-webdav:dev-master
+$ composer require creocoder/yii2-flysystem-webdav
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-webdav": "dev-master"
+"creocoder/yii2-flysystem-webdav": "*"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
@@ -322,13 +322,13 @@ Connector home: https://github.com/creocoder/yii2-flysystem-ziparchive
 Either run
 
 ```bash
-$ php composer.phar require creocoder/yii2-flysystem-ziparchive:dev-master
+$ composer require creocoder/yii2-flysystem-ziparchive
 ```
 
 or add
 
 ```
-"creocoder/yii2-flysystem-ziparchive": "dev-master"
+"creocoder/yii2-flysystem-ziparchive": "*"
 ```
 
 to the `require` section of your `composer.json` file and configure `connectors` as follows
