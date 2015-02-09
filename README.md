@@ -25,48 +25,53 @@ to the `require` section of your `composer.json` file.
 
 ## Configuring
 
-Configure `flysystem` application component as follows
+### Local filesystem
+
+Configure `filesystem` application component as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'flysystem' => [
-            'class' => 'creocoder\flysystem\FlysystemManager',
-            'default' => 'local',
-            'connectors' => [
-                //...
-                'ftp' => [
-                    'class' => 'creocoder\flysystem\connectors\FtpConnector',
-                    'host' => 'ftp.example.com',
-                    // 'port' => 21,
-                    // 'username' => 'your-username',
-                    // 'password' => 'your-password',
-                    // 'root' => '/path/to/root',
-                    // 'passive' => false,
-                    // 'ssl' => true,
-                    // 'timeout' => 60,
-                    // 'permPrivate' => 0700,
-                    // 'permPublic' => 0744,
-                    // 'transferMode' => FTP_TEXT,
-                ],
-                'local' => [
-                    'class' => 'creocoder\flysystem\connectors\LocalConnector',
-                    'path' => '@webroot/files',
-                ],
-                'null' => [
-                    'class' => 'creocoder\flysystem\connectors\NullConnector',
-                ],
-            ],
+        'filesystem' => [
+            'class' => 'creocoder\flysystem\LocalFilesystem',
+            'path' => '@webroot/files',
         ],
     ],
 ];
 ```
 
-### AWS S3 SDK v2 connector
+### FTP filesystem
 
-Connector home: https://github.com/creocoder/yii2-flysystem-aws-s3-v2
+Configure `filesystem` application component as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'filesystem' => [
+            'class' => 'creocoder\flysystem\FtpFilesystem',
+            'host' => 'ftp.example.com',
+            // 'port' => 21,
+            // 'username' => 'your-username',
+            // 'password' => 'your-password',
+            // 'root' => '/path/to/root',
+            // 'passive' => false,
+            // 'ssl' => true,
+            // 'timeout' => 60,
+            // 'permPrivate' => 0700,
+            // 'permPublic' => 0744,
+            // 'transferMode' => FTP_TEXT,
+        ],
+    ],
+];
+```
+
+### AWS S3 SDK v2 filesystem
+
+Filesystem home: https://github.com/creocoder/yii2-flysystem-aws-s3-v2
 
 Either run
 
@@ -80,36 +85,30 @@ or add
 "creocoder/yii2-flysystem-aws-s3-v2": "*"
 ```
 
-to the `require` section of your `composer.json` file and configure `connectors` as follows
+to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'flysystem' => [
-            //...
-            'connectors' => [
-                //...
-                'awss3' => [
-                    'class' => 'creocoder\flysystem\awss3v2\AwsS3Connector',
-                    'key' => 'your-key',
-                    'secret' => 'your-secret',
-                    'bucket' => 'your-bucket',
-                    // 'region' => 'your-region',
-                    // 'baseUrl' => 'your-base-url',
-                    // 'prefix' => 'your-prefix',
-                    // 'options' => [],
-                ],
-            ],
+        'filesystem' => [
+            'class' => 'creocoder\flysystem\awss3v2\AwsS3Filesystem',
+            'key' => 'your-key',
+            'secret' => 'your-secret',
+            'bucket' => 'your-bucket',
+            // 'region' => 'your-region',
+            // 'baseUrl' => 'your-base-url',
+            // 'prefix' => 'your-prefix',
+            // 'options' => [],
         ],
     ],
 ];
 ```
 
-### AWS S3 SDK v3 connector
+### AWS S3 SDK v3 filesystem
 
-Connector home: https://github.com/creocoder/yii2-flysystem-aws-s3-v3
+Filesystem home: https://github.com/creocoder/yii2-flysystem-aws-s3-v3
 
 Either run
 
@@ -123,36 +122,30 @@ or add
 "creocoder/yii2-flysystem-aws-s3-v3": "*"
 ```
 
-to the `require` section of your `composer.json` file and configure `connectors` as follows
+to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'flysystem' => [
-            //...
-            'connectors' => [
-                //...
-                'awss3' => [
-                    'class' => 'creocoder\flysystem\awss3v3\AwsS3Connector',
-                    'key' => 'your-key',
-                    'secret' => 'your-secret',
-                    'bucket' => 'your-bucket',
-                    // 'region' => 'your-region',
-                    // 'endpoint' => 'your-endpoint',
-                    // 'prefix' => 'your-prefix',
-                    // 'options' => [],
-                ],
-            ],
+        'filesystem' => [
+            'class' => 'creocoder\flysystem\awss3v3\AwsS3Filesystem',
+            'key' => 'your-key',
+            'secret' => 'your-secret',
+            'bucket' => 'your-bucket',
+            // 'region' => 'your-region',
+            // 'endpoint' => 'your-endpoint',
+            // 'prefix' => 'your-prefix',
+            // 'options' => [],
         ],
     ],
 ];
 ```
 
-### Copy connector
+### Copy filesystem
 
-Connector home: https://github.com/creocoder/yii2-flysystem-copy
+Filesystem home: https://github.com/creocoder/yii2-flysystem-copy
 
 Either run
 
@@ -166,34 +159,28 @@ or add
 "creocoder/yii2-flysystem-copy": "*"
 ```
 
-to the `require` section of your `composer.json` file and configure `connectors` as follows
+to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'flysystem' => [
-            //...
-            'connectors' => [
-                //...
-                'copy' => [
-                    'class' => 'creocoder\flysystem\copy\CopyConnector',
-                    'consumerKey' => 'your-consumer-key',
-                    'consumerSecret' => 'your-consumer-secret',
-                    'accessToken' => 'your-access-token',
-                    'tokenSecret' => 'your-token-secret',
-                    // 'prefix' => 'your-prefix',
-                ],
-            ],
+        'filesystem' => [
+            'class' => 'creocoder\flysystem\copy\CopyFilesystem',
+            'consumerKey' => 'your-consumer-key',
+            'consumerSecret' => 'your-consumer-secret',
+            'accessToken' => 'your-access-token',
+            'tokenSecret' => 'your-token-secret',
+            // 'prefix' => 'your-prefix',
         ],
     ],
 ];
 ```
 
-### Dropbox connector
+### Dropbox filesystem
 
-Connector home: https://github.com/creocoder/yii2-flysystem-dropbox
+Filesystem home: https://github.com/creocoder/yii2-flysystem-dropbox
 
 Either run
 
@@ -207,32 +194,26 @@ or add
 "creocoder/yii2-flysystem-dropbox": "*"
 ```
 
-to the `require` section of your `composer.json` file and configure `connectors` as follows
+to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'flysystem' => [
-            //...
-            'connectors' => [
-                //...
-                'dropbox' => [
-                    'class' => 'creocoder\flysystem\dropbox\DropboxConnector',
-                    'token' => 'your-token',
-                    'app' => 'your-app',
-                    // 'prefix' => 'your-prefix',
-                ],
-            ],
+        'filesystem' => [
+            'class' => 'creocoder\flysystem\dropbox\DropboxFilesystem',
+            'token' => 'your-token',
+            'app' => 'your-app',
+            // 'prefix' => 'your-prefix',
         ],
     ],
 ];
 ```
 
-### Rackspace connector
+### Rackspace filesystem
 
-Connector home: https://github.com/creocoder/yii2-flysystem-rackspace
+Filesystem home: https://github.com/creocoder/yii2-flysystem-rackspace
 
 Either run
 
@@ -246,35 +227,29 @@ or add
 "creocoder/yii2-flysystem-rackspace": "*"
 ```
 
-to the `require` section of your `composer.json` file and configure `connectors` as follows
+to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'flysystem' => [
-            //...
-            'connectors' => [
-                //...
-                'rackspace' => [
-                    'class' => 'creocoder\flysystem\rackspace\RackspaceConnector',
-                    'endpoint' => 'your-endpoint',
-                    'region' => 'your-region',
-                    'username' => 'your-username',
-                    'apiKey' => 'your-api-key',
-                    'container' => 'your-container',
-                    // 'prefix' => 'your-prefix',
-                ],
-            ],
+        'filesystem' => [
+            'class' => 'creocoder\flysystem\rackspace\RackspaceFilesystem',
+            'endpoint' => 'your-endpoint',
+            'region' => 'your-region',
+            'username' => 'your-username',
+            'apiKey' => 'your-api-key',
+            'container' => 'your-container',
+            // 'prefix' => 'your-prefix',
         ],
     ],
 ];
 ```
 
-### WebDAV connector
+### WebDAV filesystem
 
-Connector home: https://github.com/creocoder/yii2-flysystem-webdav
+Filesystem home: https://github.com/creocoder/yii2-flysystem-webdav
 
 Either run
 
@@ -288,36 +263,30 @@ or add
 "creocoder/yii2-flysystem-webdav": "*"
 ```
 
-to the `require` section of your `composer.json` file and configure `connectors` as follows
+to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'flysystem' => [
-            //...
-            'connectors' => [
-                //...
-                'webdav' => [
-                    'class' => 'creocoder\flysystem\webdav\WebDAVConnector',
-                    'baseUri' => 'your-base-uri',
-                    // 'userName' => 'your-user-name',
-                    // 'password' => 'your-password',
-                    // 'proxy' => 'your-proxy',
-                    // 'authType' => \Sabre\DAV\Client::AUTH_BASIC,
-                    // 'encoding' => \Sabre\DAV\Client::ENCODING_IDENTITY,
-                    // 'prefix' => 'your-prefix',
-                ],
-            ],
+        'filesystem' => [
+            'class' => 'creocoder\flysystem\webdav\WebDAVFilesystem',
+            'baseUri' => 'your-base-uri',
+            // 'userName' => 'your-user-name',
+            // 'password' => 'your-password',
+            // 'proxy' => 'your-proxy',
+            // 'authType' => \Sabre\DAV\Client::AUTH_BASIC,
+            // 'encoding' => \Sabre\DAV\Client::ENCODING_IDENTITY,
+            // 'prefix' => 'your-prefix',
         ],
     ],
 ];
 ```
 
-### ZipArchive connector
+### ZipArchive filesystem
 
-Connector home: https://github.com/creocoder/yii2-flysystem-ziparchive
+Filesystem home: https://github.com/creocoder/yii2-flysystem-ziparchive
 
 Either run
 
@@ -331,23 +300,33 @@ or add
 "creocoder/yii2-flysystem-ziparchive": "*"
 ```
 
-to the `require` section of your `composer.json` file and configure `connectors` as follows
+to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'flysystem' => [
-            //...
-            'connectors' => [
-                //...
-                'zip' => [
-                    'class' => 'creocoder\flysystem\ziparchive\ZipArchiveConnector',
-                    'path' => '@webroot/files/archive.zip',
-                    // 'prefix' => 'your-prefix',
-                ],
-            ],
+        'filesystem' => [
+            'class' => 'creocoder\flysystem\ziparchive\ZipArchiveFilesystem',
+            'path' => '@webroot/files/archive.zip',
+            // 'prefix' => 'your-prefix',
+        ],
+    ],
+];
+```
+
+### Null filesystem
+
+Configure `filesystem` application component as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'filesystem' => [
+            'class' => 'creocoder\flysystem\NullFilesystem',
         ],
     ],
 ];
@@ -360,7 +339,7 @@ return [
 To write file
 
 ```php
-Yii::$app->flysystem->write('filename.ext', 'contents');
+Yii::$app->filesystem->write('filename.ext', 'contents');
 ```
 
 ### Updating files
@@ -368,7 +347,7 @@ Yii::$app->flysystem->write('filename.ext', 'contents');
 To update file
 
 ```php
-Yii::$app->flysystem->update('filename.ext', 'contents');
+Yii::$app->filesystem->update('filename.ext', 'contents');
 ```
 
 ### Writing or updating files
@@ -376,7 +355,7 @@ Yii::$app->flysystem->update('filename.ext', 'contents');
 To write or update file
 
 ```php
-Yii::$app->flysystem->put('filename.ext', 'contents');
+Yii::$app->filesystem->put('filename.ext', 'contents');
 ```
 
 ### Reading files
@@ -384,7 +363,7 @@ Yii::$app->flysystem->put('filename.ext', 'contents');
 To read file
 
 ```php
-$contents = Yii::$app->flysystem->read('filename.ext');
+$contents = Yii::$app->filesystem->read('filename.ext');
 ```
 
 ### Checking if a file exists
@@ -392,7 +371,7 @@ $contents = Yii::$app->flysystem->read('filename.ext');
 To check if a file exists
 
 ```php
-$exists = Yii::$app->flysystem->has('filename.ext');
+$exists = Yii::$app->filesystem->has('filename.ext');
 ```
 
 ### Deleting files
@@ -400,7 +379,7 @@ $exists = Yii::$app->flysystem->has('filename.ext');
 To delete file
 
 ```php
-Yii::$app->flysystem->delete('filename.ext');
+Yii::$app->filesystem->delete('filename.ext');
 ```
 
 ### Reading and deleting files
@@ -408,7 +387,7 @@ Yii::$app->flysystem->delete('filename.ext');
 To read and delete file
 
 ```php
-$contents = Yii::$app->flysystem->readAndDelete('filename.ext');
+$contents = Yii::$app->filesystem->readAndDelete('filename.ext');
 ```
 
 ### Renaming files
@@ -416,7 +395,7 @@ $contents = Yii::$app->flysystem->readAndDelete('filename.ext');
 To rename file
 
 ```php
-Yii::$app->flysystem->rename('filename.ext', 'newname.ext');
+Yii::$app->filesystem->rename('filename.ext', 'newname.ext');
 ```
 
 ### Getting files mimetype
@@ -424,7 +403,7 @@ Yii::$app->flysystem->rename('filename.ext', 'newname.ext');
 To get file mimetype
 
 ```php
-$mimetype = Yii::$app->flysystem->getMimetype('filename.ext');
+$mimetype = Yii::$app->filesystem->getMimetype('filename.ext');
 ```
 
 ### Getting files timestamp
@@ -432,7 +411,7 @@ $mimetype = Yii::$app->flysystem->getMimetype('filename.ext');
 To get file timestamp
 
 ```php
-$timestamp = Yii::$app->flysystem->getTimestamp('filename.ext');
+$timestamp = Yii::$app->filesystem->getTimestamp('filename.ext');
 ```
 
 ### Getting files size
@@ -440,7 +419,7 @@ $timestamp = Yii::$app->flysystem->getTimestamp('filename.ext');
 To get file size
 
 ```php
-$timestamp = Yii::$app->flysystem->getSize('filename.ext');
+$timestamp = Yii::$app->filesystem->getSize('filename.ext');
 ```
 
 ### Creating directories
@@ -448,13 +427,13 @@ $timestamp = Yii::$app->flysystem->getSize('filename.ext');
 To create directory
 
 ```php
-Yii::$app->flysystem->createDir('path/to/directory');
+Yii::$app->filesystem->createDir('path/to/directory');
 ```
 
 Directories are also made implicitly when writing to a deeper path
 
 ```php
-Yii::$app->flysystem->write('path/to/filename.ext');
+Yii::$app->filesystem->write('path/to/filename.ext');
 ```
 
 ### Deleting directories
@@ -462,7 +441,7 @@ Yii::$app->flysystem->write('path/to/filename.ext');
 To delete directory
 
 ```php
-Yii::$app->flysystem->deleteDir('path/to/filename.ext');
+Yii::$app->filesystem->deleteDir('path/to/filename.ext');
 ```
 
 ## Donating
