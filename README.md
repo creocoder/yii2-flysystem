@@ -69,6 +69,22 @@ return [
 ];
 ```
 
+### NULL filesystem
+
+Configure `filesystem` application component as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'filesystem' => [
+            'class' => 'creocoder\flysystem\NullFilesystem',
+        ],
+    ],
+];
+```
+
 ### AWS S3 SDK v2 filesystem
 
 Filesystem home: https://github.com/creocoder/yii2-flysystem-aws-s3-v2
@@ -311,22 +327,6 @@ return [
             'class' => 'creocoder\flysystem\ziparchive\ZipArchiveFilesystem',
             'path' => '@webroot/files/archive.zip',
             // 'prefix' => 'your-prefix',
-        ],
-    ],
-];
-```
-
-### Null filesystem
-
-Configure `filesystem` application component as follows
-
-```php
-return [
-    //...
-    'components' => [
-        //...
-        'filesystem' => [
-            'class' => 'creocoder\flysystem\NullFilesystem',
         ],
     ],
 ];
