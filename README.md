@@ -29,14 +29,14 @@ to the `require` section of your `composer.json` file.
 
 ### Local filesystem
 
-Configure `filesystem` application component as follows
+Configure application `components` as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'filesystem' => [
+        'localFs' => [
             'class' => 'creocoder\flysystem\LocalFilesystem',
             'path' => '@webroot/files',
         ],
@@ -46,14 +46,14 @@ return [
 
 ### FTP filesystem
 
-Configure `filesystem` application component as follows
+Configure application `components` as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'filesystem' => [
+        'ftpFs' => [
             'class' => 'creocoder\flysystem\FtpFilesystem',
             'host' => 'ftp.example.com',
             // 'port' => 21,
@@ -73,14 +73,14 @@ return [
 
 ### NULL filesystem
 
-Configure `filesystem` application component as follows
+Configure application `components` as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'filesystem' => [
+        'nullFs' => [
             'class' => 'creocoder\flysystem\NullFilesystem',
         ],
     ],
@@ -101,14 +101,14 @@ or add
 "league/flysystem-aws-s3-v2": "~1.0"
 ```
 
-to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
+to the `require` section of your `composer.json` file and configure application `components` as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'filesystem' => [
+        'awss3Fs' => [
             'class' => 'creocoder\flysystem\AwsS3Filesystem',
             'key' => 'your-key',
             'secret' => 'your-secret',
@@ -136,14 +136,14 @@ or add
 "league/flysystem-copy": "~1.0"
 ```
 
-to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
+to the `require` section of your `composer.json` file and configure application `components` as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'filesystem' => [
+        'copyFs' => [
             'class' => 'creocoder\flysystem\CopyFilesystem',
             'consumerKey' => 'your-consumer-key',
             'consumerSecret' => 'your-consumer-secret',
@@ -169,14 +169,14 @@ or add
 "league/flysystem-dropbox": "~1.0"
 ```
 
-to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
+to the `require` section of your `composer.json` file and configure application `components` as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'filesystem' => [
+        'dropboxFs' => [
             'class' => 'creocoder\flysystem\DropboxFilesystem',
             'token' => 'your-token',
             'app' => 'your-app',
@@ -200,14 +200,14 @@ or add
 "league/flysystem-rackspace": "~1.0"
 ```
 
-to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
+to the `require` section of your `composer.json` file and configure application `components` as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'filesystem' => [
+        'rackspaceFs' => [
             'class' => 'creocoder\flysystem\RackspaceFilesystem',
             'endpoint' => 'your-endpoint',
             'region' => 'your-region',
@@ -234,14 +234,14 @@ or add
 "league/flysystem-webdav": "~1.0"
 ```
 
-to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
+to the `require` section of your `composer.json` file and configure application `components` as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'filesystem' => [
+        'webdavFs' => [
             'class' => 'creocoder\flysystem\WebDAVFilesystem',
             'baseUri' => 'your-base-uri',
             // 'userName' => 'your-user-name',
@@ -269,14 +269,14 @@ or add
 "league/flysystem-ziparchive": "~1.0"
 ```
 
-to the `require` section of your `composer.json` file and configure `filesystem` application component as follows
+to the `require` section of your `composer.json` file and configure application `components` as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'filesystem' => [
+        'ziparchiveFs' => [
             'class' => 'creocoder\flysystem\ZipArchiveFilesystem',
             'path' => '@webroot/files/archive.zip',
             // 'prefix' => 'your-prefix',
