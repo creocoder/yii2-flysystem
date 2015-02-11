@@ -36,7 +36,7 @@ return [
     //...
     'components' => [
         //...
-        'localFs' => [
+        'fs' => [
             'class' => 'creocoder\flysystem\LocalFilesystem',
             'path' => '@webroot/files',
         ],
@@ -292,7 +292,7 @@ return [
 To write file
 
 ```php
-Yii::$app->filesystem->write('filename.ext', 'contents');
+Yii::$app->fs->write('filename.ext', 'contents');
 ```
 
 ### Updating files
@@ -300,7 +300,7 @@ Yii::$app->filesystem->write('filename.ext', 'contents');
 To update file
 
 ```php
-Yii::$app->filesystem->update('filename.ext', 'contents');
+Yii::$app->fs->update('filename.ext', 'contents');
 ```
 
 ### Writing or updating files
@@ -308,7 +308,7 @@ Yii::$app->filesystem->update('filename.ext', 'contents');
 To write or update file
 
 ```php
-Yii::$app->filesystem->put('filename.ext', 'contents');
+Yii::$app->fs->put('filename.ext', 'contents');
 ```
 
 ### Reading files
@@ -316,7 +316,7 @@ Yii::$app->filesystem->put('filename.ext', 'contents');
 To read file
 
 ```php
-$contents = Yii::$app->filesystem->read('filename.ext');
+$contents = Yii::$app->fs->read('filename.ext');
 ```
 
 ### Checking if a file exists
@@ -324,7 +324,7 @@ $contents = Yii::$app->filesystem->read('filename.ext');
 To check if a file exists
 
 ```php
-$exists = Yii::$app->filesystem->has('filename.ext');
+$exists = Yii::$app->fs->has('filename.ext');
 ```
 
 ### Deleting files
@@ -332,7 +332,7 @@ $exists = Yii::$app->filesystem->has('filename.ext');
 To delete file
 
 ```php
-Yii::$app->filesystem->delete('filename.ext');
+Yii::$app->fs->delete('filename.ext');
 ```
 
 ### Reading and deleting files
@@ -340,7 +340,7 @@ Yii::$app->filesystem->delete('filename.ext');
 To read and delete file
 
 ```php
-$contents = Yii::$app->filesystem->readAndDelete('filename.ext');
+$contents = Yii::$app->fs->readAndDelete('filename.ext');
 ```
 
 ### Renaming files
@@ -348,7 +348,7 @@ $contents = Yii::$app->filesystem->readAndDelete('filename.ext');
 To rename file
 
 ```php
-Yii::$app->filesystem->rename('filename.ext', 'newname.ext');
+Yii::$app->fs->rename('filename.ext', 'newname.ext');
 ```
 
 ### Getting files mimetype
@@ -356,7 +356,7 @@ Yii::$app->filesystem->rename('filename.ext', 'newname.ext');
 To get file mimetype
 
 ```php
-$mimetype = Yii::$app->filesystem->getMimetype('filename.ext');
+$mimetype = Yii::$app->fs->getMimetype('filename.ext');
 ```
 
 ### Getting files timestamp
@@ -364,7 +364,7 @@ $mimetype = Yii::$app->filesystem->getMimetype('filename.ext');
 To get file timestamp
 
 ```php
-$timestamp = Yii::$app->filesystem->getTimestamp('filename.ext');
+$timestamp = Yii::$app->fs->getTimestamp('filename.ext');
 ```
 
 ### Getting files size
@@ -372,7 +372,7 @@ $timestamp = Yii::$app->filesystem->getTimestamp('filename.ext');
 To get file size
 
 ```php
-$timestamp = Yii::$app->filesystem->getSize('filename.ext');
+$timestamp = Yii::$app->fs->getSize('filename.ext');
 ```
 
 ### Creating directories
@@ -380,13 +380,13 @@ $timestamp = Yii::$app->filesystem->getSize('filename.ext');
 To create directory
 
 ```php
-Yii::$app->filesystem->createDir('path/to/directory');
+Yii::$app->fs->createDir('path/to/directory');
 ```
 
 Directories are also made implicitly when writing to a deeper path
 
 ```php
-Yii::$app->filesystem->write('path/to/filename.ext');
+Yii::$app->fs->write('path/to/filename.ext');
 ```
 
 ### Deleting directories
@@ -394,7 +394,7 @@ Yii::$app->filesystem->write('path/to/filename.ext');
 To delete directory
 
 ```php
-Yii::$app->filesystem->deleteDir('path/to/filename.ext');
+Yii::$app->fs->deleteDir('path/to/filename.ext');
 ```
 
 ## Donating
