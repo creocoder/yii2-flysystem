@@ -285,6 +285,25 @@ return [
 ];
 ```
 
+### Global visibility settings
+
+Configure `fs` application component as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'fs' => [
+            //...
+            'config' => [
+                'visibility' => \League\Flysystem\AdapterInterface::VISIBILITY_PRIVATE,
+            ],
+        ],
+    ],
+];
+```
+
 ## Usage
 
 ### Writing files
