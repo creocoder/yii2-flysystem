@@ -287,14 +287,14 @@ return [
 
 ### Global visibility settings
 
-Configure `fs` application component as follows
+Configure `fsID` application component as follows
 
 ```php
 return [
     //...
     'components' => [
         //...
-        'fs' => [
+        'fsID' => [
             //...
             'config' => [
                 'visibility' => \League\Flysystem\AdapterInterface::VISIBILITY_PRIVATE,
