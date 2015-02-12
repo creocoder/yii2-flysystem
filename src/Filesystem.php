@@ -50,6 +50,10 @@ use yii\base\Component;
 abstract class Filesystem extends Component
 {
     /**
+     * @var \League\Flysystem\Config|array|string|null
+     */
+    public $config;
+    /**
      * @var \League\Flysystem\FilesystemInterface
      */
     protected $filesystem;
@@ -64,7 +68,7 @@ abstract class Filesystem extends Component
      */
     public function init()
     {
-        $this->filesystem = new NativeFilesystem($this->getAdapter());
+        $this->filesystem = new NativeFilesystem($this->getAdapter(), $this->config);
     }
 
     /**
