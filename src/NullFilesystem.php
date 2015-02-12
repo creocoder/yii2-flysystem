@@ -20,7 +20,7 @@ class NullFilesystem extends Filesystem
     /**
      * @return NullAdapter
      */
-    public function getAdapter()
+    protected function prepareAdapter()
     {
         return new NullAdapter();
     }

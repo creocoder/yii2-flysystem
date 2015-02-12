@@ -63,7 +63,7 @@ class WebDAVFilesystem extends Filesystem
     /**
      * @return WebDAVAdapter
      */
-    public function getAdapter()
+    protected function prepareAdapter()
     {
         $config = [];
 

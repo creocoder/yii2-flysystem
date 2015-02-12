@@ -40,7 +40,7 @@ class LocalFilesystem extends Filesystem
     /**
      * @return Local
      */
-    public function getAdapter()
+    protected function prepareAdapter()
     {
         return new Local($this->path);
     }

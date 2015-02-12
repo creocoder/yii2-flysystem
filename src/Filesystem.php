@@ -21,6 +21,7 @@ use yii\base\Component;
  * @method boolean delete(string $path)
  * @method boolean deleteDir(string $dirname)
  * @method \League\Flysystem\Handler get(string $path, \League\Flysystem\Handler $handler = null)
+ * @method \League\Flysystem\AdapterInterface getAdapter()
  * @method \League\Flysystem\Config getConfig()
  * @method array|false getMetadata(string $path)
  * @method string|false getMimetype(string $path)
@@ -61,14 +62,14 @@ abstract class Filesystem extends Component
     /**
      * @return \League\Flysystem\AdapterInterface
      */
-    abstract public function getAdapter();
+    abstract protected function prepareAdapter();
 
     /**
      * @inheritdoc
      */
     public function init()
     {
-        $this->filesystem = new NativeFilesystem($this->getAdapter(), $this->config);
+        $this->filesystem = new NativeFilesystem($this->prepareAdapter(), $this->config);
     }
 
     /**

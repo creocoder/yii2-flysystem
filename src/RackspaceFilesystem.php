@@ -75,7 +75,7 @@ class RackspaceFilesystem extends Filesystem
     /**
      * @return RackspaceAdapter
      */
-    public function getAdapter()
+    protected function prepareAdapter()
     {
         return new RackspaceAdapter(
             (new Rackspace($this->endpoint, [

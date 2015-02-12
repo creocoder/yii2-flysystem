@@ -71,7 +71,7 @@ class AwsS3Filesystem extends Filesystem
     /**
      * @return AwsS3Adapter
      */
-    public function getAdapter()
+    protected function prepareAdapter()
     {
         $config = ['key' => $this->key, 'secret' => $this->secret];
 

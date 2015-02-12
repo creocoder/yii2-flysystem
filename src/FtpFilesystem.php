@@ -82,7 +82,7 @@ class FtpFilesystem extends Filesystem
     /**
      * @return Ftp
      */
-    public function getAdapter()
+    protected function prepareAdapter()
     {
         $config = [];
 
