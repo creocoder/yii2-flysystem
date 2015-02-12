@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5c4d20050902ccd3c59c2ed2100e7982",
+    "hash": "1e72f73273621e087cce0d82d6559c9a",
     "packages": [
         {
             "name": "bower-asset/jquery",
@@ -757,16 +757,16 @@
         },
         {
             "name": "league/flysystem-aws-s3-v2",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-aws-s3-v2.git",
-                "reference": "3c987f0b9fc6e9c55f2d3341b82cf016d7098760"
+                "reference": "dfb35efdbd1261b114d0dcb6785b4d1c05467e0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v2/zipball/3c987f0b9fc6e9c55f2d3341b82cf016d7098760",
-                "reference": "3c987f0b9fc6e9c55f2d3341b82cf016d7098760",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v2/zipball/dfb35efdbd1261b114d0dcb6785b4d1c05467e0f",
+                "reference": "dfb35efdbd1261b114d0dcb6785b4d1c05467e0f",
                 "shasum": ""
             },
             "require": {
@@ -800,7 +800,51 @@
                 }
             ],
             "description": "Flysystem adapter for AWS S3 SDK v2",
-            "time": "2015-01-21 22:19:36"
+            "time": "2015-02-10 13:16:47"
+        },
+        {
+            "name": "league/flysystem-cached-adapter",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem-cached-adapter.git",
+                "reference": "696697b56f00f8ec003d23810b52ab00e68df575"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-cached-adapter/zipball/696697b56f00f8ec003d23810b52ab00e68df575",
+                "reference": "696697b56f00f8ec003d23810b52ab00e68df575",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "~1.0"
+            },
+            "require-dev": {
+                "henrikbjorn/phpspec-code-coverage": "~1.0@dev",
+                "mockery/mockery": "~0.9",
+                "phpspec/phpspec": "~2.1",
+                "phpunit/phpunit": "~4.1",
+                "predis/predis": "~1.0",
+                "tedivm/stash": "~0.12"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\Cached\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "frankdejonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "An adapter decorator to enable meta-data caching.",
+            "time": "2015-02-03 08:09:49"
         },
         {
             "name": "league/flysystem-copy",
@@ -942,6 +986,52 @@
             ],
             "description": "Flysystem adapter for Rackspace",
             "time": "2015-01-21 22:20:12"
+        },
+        {
+            "name": "league/flysystem-replicate-adapter",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem-replicate-adapter.git",
+                "reference": "f1ad22787c527e0d9daee225296fee3a9e3333a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-replicate-adapter/zipball/f1ad22787c527e0d9daee225296fee3a9e3333a1",
+                "reference": "f1ad22787c527e0d9daee225296fee3a9e3333a1",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\Replicate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Flysystem adapter for Replica's",
+            "time": "2015-01-21 22:20:16"
         },
         {
             "name": "league/flysystem-webdav",
