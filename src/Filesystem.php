@@ -7,11 +7,14 @@
 
 namespace creocoder\flysystem;
 
+use League\Flysystem\AdapterInterface;
+use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Filesystem as NativeFilesystem;
 use League\Flysystem\Replicate\ReplicateAdapter;
 use Yii;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
+use yii\caching\Cache;
 
 /**
  * Filesystem
@@ -60,6 +63,10 @@ abstract class Filesystem extends Component
     /**
      * @var string|null
      */
+    public $cache;
+    /**
+     * @var string|null
+     */
     public $replica;
     /**
      * @var \League\Flysystem\FilesystemInterface
@@ -75,29 +82,40 @@ abstract class Filesystem extends Component
     }
 
     /**
-     * @return \League\Flysystem\AdapterInterface
+     * @return AdapterInterface
      */
     abstract protected function prepareAdapter();
 
     /**
-     * @param \League\Flysystem\AdapterInterface $adapter
-     * @return \League\Flysystem\AdapterInterface
+     * @param AdapterInterface $adapter
+     * @return AdapterInterface
      * @throws InvalidConfigException
      */
-    protected function decorateAdapter($adapter)
+    protected function decorateAdapter(AdapterInterface $adapter)
     {
-        if ($this->replica === null) {
-            return $adapter;
+        if ($this->cache !== null) {
+            /* @var Cache $cache */
+            $cache = Yii::$app->get($this->cache);
+
+            if (!$cache instanceof Cache) {
+                throw new InvalidConfigException('The "cache" property must be an instance of \yii\caching\Cache subclasses.');
+            }
+
+            $adapter = new CachedAdapter($adapter, new YiiCache($cache));
         }
 
-        /* @var Filesystem $filesystem */
-        $filesystem = Yii::$app->get($this->replica);
+        if ($this->replica !== null) {
+            /* @var Filesystem $filesystem */
+            $filesystem = Yii::$app->get($this->replica);
 
-        if (!$filesystem instanceof Filesystem) {
-            throw new InvalidConfigException('The "replica" property must be an instance of \creocoder\flysystem\Filesystem subclasses.');
+            if (!$filesystem instanceof Filesystem) {
+                throw new InvalidConfigException('The "replica" property must be an instance of \creocoder\flysystem\Filesystem subclasses.');
+            }
+
+            $adapter = new ReplicateAdapter($adapter, $filesystem->getAdapter());
         }
 
-        return new ReplicateAdapter($adapter, $filesystem->getAdapter());
+        return $adapter;
     }
 
     /**
