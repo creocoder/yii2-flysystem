@@ -42,6 +42,6 @@ class LocalFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        return new Local($this->path);
+        return $this->decorateAdapter(new Local($this->path));
     }
 }
