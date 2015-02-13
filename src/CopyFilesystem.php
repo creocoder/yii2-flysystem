@@ -69,9 +69,9 @@ class CopyFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        return new CopyAdapter(
+        return $this->decorateAdapter(new CopyAdapter(
             new API($this->consumerKey, $this->consumerSecret, $this->accessToken, $this->tokenSecret),
             $this->prefix
-        );
+        ));
     }
 }
