@@ -285,7 +285,7 @@ return [
 ];
 ```
 
-### Replication
+### Replication feature
 
 Either run
 
