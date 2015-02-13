@@ -285,6 +285,37 @@ return [
 ];
 ```
 
+### Caching feature
+
+Either run
+
+```bash
+$ composer require league/flysystem-cached-adapter
+```
+
+or add
+
+```
+"league/flysystem-cached-adapter": "~1.0"
+```
+
+to the `require` section of your `composer.json` file and configure `fsID` application component as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'fsID' => [
+            //...
+            'cache' => 'cacheID',
+            // 'cacheKey' => 'flysystem',
+            // 'cacheDuration' => 3600,
+        ],
+    ],
+];
+```
+
 ### Replication feature
 
 Either run
