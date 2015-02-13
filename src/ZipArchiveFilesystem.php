@@ -46,6 +46,10 @@ class ZipArchiveFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        return new ZipArchiveAdapter($this->path, null, $this->prefix);
+        return $this->decorateAdapter(new ZipArchiveAdapter(
+            $this->path,
+            null,
+            $this->prefix
+        ));
     }
 }
