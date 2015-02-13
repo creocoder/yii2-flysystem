@@ -11,6 +11,7 @@ use League\Flysystem\Filesystem as NativeFilesystem;
 use League\Flysystem\Replicate\ReplicateAdapter;
 use Yii;
 use yii\base\Component;
+use yii\base\InvalidConfigException;
 
 /**
  * Filesystem
@@ -81,6 +82,7 @@ abstract class Filesystem extends Component
     /**
      * @param \League\Flysystem\AdapterInterface $adapter
      * @return \League\Flysystem\AdapterInterface
+     * @throws InvalidConfigException
      */
     protected function decorateAdapter($adapter)
     {
@@ -90,6 +92,10 @@ abstract class Filesystem extends Component
 
         /* @var Filesystem $filesystem */
         $filesystem = Yii::$app->get($this->replica);
+
+        if (!$filesystem instanceof Filesystem) {
+            throw new InvalidConfigException('The "replica" property must be an instance of \creocoder\flysystem\Filesystem subclasses.');
+        }
 
         return new ReplicateAdapter($adapter, $filesystem->getAdapter());
     }
