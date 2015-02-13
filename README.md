@@ -304,6 +304,23 @@ return [
 ];
 ```
 
+### Replication
+
+Configure `fsID` application component as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'fsID' => [
+            //...
+            'replica' => 'anotherFsID',
+        ],
+    ],
+];
+```
+
 ## Usage
 
 ### Writing files
