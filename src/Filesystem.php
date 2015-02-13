@@ -65,6 +65,14 @@ abstract class Filesystem extends Component
      */
     public $cache;
     /**
+     * @var string
+     */
+    public $cacheKey = 'flysystem';
+    /**
+     * @var integer
+     */
+    public $cacheDuration = 3600;
+    /**
      * @var string|null
      */
     public $replica;
@@ -101,7 +109,7 @@ abstract class Filesystem extends Component
                 throw new InvalidConfigException('The "cache" property must be an instance of \yii\caching\Cache subclasses.');
             }
 
-            $adapter = new CachedAdapter($adapter, new YiiCache($cache));
+            $adapter = new CachedAdapter($adapter, new YiiCache($cache, $this->cacheKey, $this->cacheDuration));
         }
 
         if ($this->replica !== null) {
