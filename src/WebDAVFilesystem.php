@@ -80,9 +80,9 @@ class WebDAVFilesystem extends Filesystem
             }
         }
 
-        return new WebDAVAdapter(
+        return $this->decorateAdapter(new WebDAVAdapter(
             new Client($config),
             $this->prefix
-        );
+        ));
     }
 }
