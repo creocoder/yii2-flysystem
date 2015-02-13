@@ -22,6 +22,6 @@ class NullFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        return new NullAdapter();
+        return $this->decorateAdapter(new NullAdapter());
     }
 }
