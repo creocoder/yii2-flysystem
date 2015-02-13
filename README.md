@@ -285,6 +285,35 @@ return [
 ];
 ```
 
+### Replication
+
+Either run
+
+```bash
+$ composer require league/flysystem-replicate-adapter
+```
+
+or add
+
+```
+"league/flysystem-replicate-adapter": "~1.0"
+```
+
+to the `require` section of your `composer.json` file and configure `fsID` application component as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'fsID' => [
+            //...
+            'replica' => 'anotherFsID',
+        ],
+    ],
+];
+```
+
 ### Global visibility settings
 
 Configure `fsID` application component as follows
@@ -299,23 +328,6 @@ return [
             'config' => [
                 'visibility' => \League\Flysystem\AdapterInterface::VISIBILITY_PRIVATE,
             ],
-        ],
-    ],
-];
-```
-
-### Replication
-
-Configure `fsID` application component as follows
-
-```php
-return [
-    //...
-    'components' => [
-        //...
-        'fsID' => [
-            //...
-            'replica' => 'anotherFsID',
         ],
     ],
 ];
