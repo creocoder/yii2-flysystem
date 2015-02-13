@@ -83,6 +83,11 @@ class AwsS3Filesystem extends Filesystem
             $config['base_url'] = $this->baseUrl;
         }
 
-        return new AwsS3Adapter(S3Client::factory($config), $this->bucket, $this->prefix, $this->options);
+        return $this->decorateAdapter(new AwsS3Adapter(
+            S3Client::factory($config),
+            $this->bucket,
+            $this->prefix,
+            $this->options
+        ));
     }
 }
