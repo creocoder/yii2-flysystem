@@ -6,6 +6,9 @@ php:
   - 5.6
   - hhvm
 
+env:
+  - HHVM_OPTS="-vEval.EnableZendCompat=true"
+
 install:
   - composer self-update
   - composer global require fxp/composer-asset-plugin:~1.0
