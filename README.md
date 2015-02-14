@@ -478,6 +478,26 @@ To delete directory
 Yii::$app->fs->deleteDir('path/to/filename.ext');
 ```
 
+### Listing contents
+
+TBD.
+
+### Listing paths
+
+TBD.
+
+### Listing with ensured presence of specific metadata
+
+TBD.
+
+### Getting file into with explicit metadata
+
+TBD.
+
+### Using streams for reads and writes
+
+TBD.
+
 ## Donating
 
 Support this project and [others by creocoder](https://gratipay.com/creocoder/) via [gratipay](https://gratipay.com/creocoder/).
