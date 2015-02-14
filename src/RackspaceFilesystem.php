@@ -77,12 +77,12 @@ class RackspaceFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        return $this->decorateAdapter(new RackspaceAdapter(
+        return new RackspaceAdapter(
             (new Rackspace($this->endpoint, [
                 'username' => $this->username,
                 'apiKey' => $this->apiKey]
             ))->objectStoreService('cloudFiles', $this->region)->getContainer($this->container),
             $this->prefix
-        ));
+        );
     }
 }

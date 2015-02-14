@@ -104,6 +104,6 @@ class FtpFilesystem extends Filesystem
             }
         }
 
-        return $this->decorateAdapter(new Ftp($config));
+        return new Ftp($config);
     }
 }

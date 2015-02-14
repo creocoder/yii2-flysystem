@@ -86,21 +86,8 @@ abstract class Filesystem extends Component
      */
     public function init()
     {
-        $this->filesystem = new NativeFilesystem($this->prepareAdapter(), $this->config);
-    }
+        $adapter = $this->prepareAdapter();
 
-    /**
-     * @return AdapterInterface
-     */
-    abstract protected function prepareAdapter();
-
-    /**
-     * @param AdapterInterface $adapter
-     * @return AdapterInterface
-     * @throws InvalidConfigException
-     */
-    protected function decorateAdapter(AdapterInterface $adapter)
-    {
         if ($this->cache !== null) {
             /* @var Cache $cache */
             $cache = Yii::$app->get($this->cache);
@@ -123,8 +110,13 @@ abstract class Filesystem extends Component
             $adapter = new ReplicateAdapter($adapter, $filesystem->getAdapter());
         }
 
-        return $adapter;
+        $this->filesystem = new NativeFilesystem($adapter, $this->config);
     }
+
+    /**
+     * @return AdapterInterface
+     */
+    abstract protected function prepareAdapter();
 
     /**
      * @param string $method

@@ -53,9 +53,9 @@ class DropboxFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        return $this->decorateAdapter(new DropboxAdapter(
+        return new DropboxAdapter(
             new Client($this->token, $this->app),
             $this->prefix
-        ));
+        );
     }
 }
