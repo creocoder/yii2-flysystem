@@ -1,7 +1,5 @@
 # Flysystem Extension for Yii 2
 
-[![Build Status](https://img.shields.io/travis/creocoder/yii2-flysystem/master.svg?style=flat-square)](https://travis-ci.org/creocoder/yii2-flysystem)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/creocoder/yii2-flysystem/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/creocoder/yii2-flysystem/?branch=master)
 [![Code Quality](https://img.shields.io/scrutinizer/g/creocoder/yii2-flysystem/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/creocoder/yii2-flysystem/?branch=master)
 [![Packagist Version](https://img.shields.io/packagist/v/creocoder/yii2-flysystem.svg?style=flat-square)](https://packagist.org/packages/creocoder/yii2-flysystem)
 [![Total Downloads](https://img.shields.io/packagist/dt/creocoder/yii2-flysystem.svg?style=flat-square)](https://packagist.org/packages/creocoder/yii2-flysystem)
