@@ -122,6 +122,46 @@ return [
 ];
 ```
 
+### Azure filesystem
+
+Add the following to the `repositories` section of your `composer.json`
+
+```
+{
+    "type": "pear",
+    "url": "http://pear.php.net"
+}
+```
+
+Either run
+
+```bash
+$ composer require league/flysystem-azure
+```
+
+or add
+
+```
+"league/flysystem-azure": "~1.0"
+```
+
+to the `require` section of your `composer.json` file and configure application `components` as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'azureFs' => [
+            'class' => 'creocoder\flysystem\AzureFilesystem',
+            'accountName' => 'your-account-name',
+            'accountKey' => 'your-account-key',
+            'container' => 'your-container',
+        ],
+    ],
+];
+```
+
 ### Copy filesystem
 
 Either run
