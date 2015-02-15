@@ -9,7 +9,6 @@ namespace creocoder\flysystem;
 
 use Barracuda\Copy\API;
 use League\Flysystem\Copy\CopyAdapter;
-use Yii;
 use yii\base\InvalidConfigException;
 
 /**

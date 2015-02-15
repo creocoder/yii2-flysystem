@@ -9,7 +9,6 @@ namespace creocoder\flysystem;
 
 use League\Flysystem\Azure\AzureAdapter;
 use WindowsAzure\Common\ServicesBuilder;
-use Yii;
 use yii\base\InvalidConfigException;
 
 /**

@@ -8,7 +8,6 @@
 namespace creocoder\flysystem;
 
 use League\Flysystem\Adapter\NullAdapter;
-use Yii;
 
 /**
  * NullFilesystem
