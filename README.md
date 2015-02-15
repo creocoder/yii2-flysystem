@@ -374,12 +374,26 @@ To write file
 Yii::$app->fs->write('filename.ext', 'contents');
 ```
 
+To write file using stream contents
+
+```php
+$stream = fopen('/path/to/somefile.ext', 'r+');
+Yii::$app->fs->writeStream('filename.ext', $stream);
+```
+
 ### Updating files
 
 To update file
 
 ```php
 Yii::$app->fs->update('filename.ext', 'contents');
+```
+
+To update file using stream contents
+
+```php
+$stream = fopen('/path/to/somefile.ext', 'r+');
+Yii::$app->fs->updateStream('filename.ext', $stream);
 ```
 
 ### Writing or updating files
@@ -390,12 +404,27 @@ To write or update file
 Yii::$app->fs->put('filename.ext', 'contents');
 ```
 
+To write or update file using stream contents
+
+```php
+$stream = fopen('/path/to/somefile.ext', 'r+');
+Yii::$app->fs->putStream('filename.ext', $stream);
+```
+
 ### Reading files
 
 To read file
 
 ```php
 $contents = Yii::$app->fs->read('filename.ext');
+```
+
+To retreive a read-stream
+
+```php
+$stream = Yii::$app->fs->readStream('filename.ext');
+$contents = stream_get_contents($stream);
+fclose($stream);
 ```
 
 ### Checking if a file exists
@@ -476,25 +505,83 @@ To delete directory
 Yii::$app->fs->deleteDir('path/to/filename.ext');
 ```
 
+### Managing visibility
+
+Visibility is the abstraction of file permissions across multiple platforms. Visibility can be either public or private.
+
+```php
+use League\Flysystem\AdapterInterface;
+
+Yii::$app->fs->write('filename.ext', 'contents', [
+    'visibility' => AdapterInterface::VISIBILITY_PRIVATE
+]);
+```
+
+You can also change and check visibility of existing files
+
+```php
+use League\Flysystem\AdapterInterface;
+
+if (Yii::$app->fs->getVisibility('filename.ext') === AdapterInterface::VISIBILITY_PRIVATE) {
+    Yii::$app->fs->setVisibility('filename.ext', AdapterInterface::VISIBILITY_PUBLIC);
+}
+```
+
 ### Listing contents
 
-TBD.
+To list contents
+
+```php
+$contents = Yii::$app->fs->listContents();
+
+foreach ($contents as $object) {
+    echo $object['basename'] . ' is located at' . $object['path'] . ' and is a ' . $object['type'];
+}
+```
+
+By default Flysystem lists the top directory non-recursively. You can supply a directory name and recursive boolean to get more precise results
+
+```php
+$contents = Yii::$app->fs->listContents('path/to/directory', true);
+```
 
 ### Listing paths
 
-TBD.
+To list paths
+
+```php
+$paths = Yii::$app->fs->listPaths();
+
+foreach ($paths as $path) {
+    echo $path;
+}
+```
 
 ### Listing with ensured presence of specific metadata
 
-TBD.
+To list with ensured presence of specific metadata
+
+```php
+$listing = Yii::$app->fs->listWith(
+    ['mimetype', 'size', 'timestamp'],
+    'optional/path/to/directory',
+    true
+);
+
+foreach ($listing as $object) {
+    echo $object['path'] . ' has mimetype: ' . $object['mimetype'];
+}
+```
 
 ### Getting file into with explicit metadata
 
-TBD.
+To get file info with explicit metadata
 
-### Using streams for reads and writes
-
-TBD.
+```php
+$info = Yii::$app->fs->getWithMetadata('path/to/filename.ext', ['timestamp', 'mimetype']);
+echo $info['mimetype'];
+echo $info['timestamp'];
+```
 
 ## Donating
 
