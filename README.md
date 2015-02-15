@@ -535,7 +535,9 @@ To list contents
 $contents = Yii::$app->fs->listContents();
 
 foreach ($contents as $object) {
-    echo $object['basename'] . ' is located at' . $object['path'] . ' and is a ' . $object['type'];
+    echo $object['basename']
+        . ' is located at' . $object['path']
+        . ' and is a ' . $object['type'];
 }
 ```
 
