@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "268b8378e709961e57debb8e34bf11bd",
+    "hash": "321662a5109a3e7c1fc44fb9234ef3a8",
     "packages": [
         {
             "name": "bower-asset/jquery",
@@ -989,6 +989,52 @@
             ],
             "description": "Flysystem adapter for Dropbox",
             "time": "2015-01-21 22:19:57"
+        },
+        {
+            "name": "league/flysystem-gridfs",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem-gridfs.git",
+                "reference": "a0f9ba1b763619045796cfbcacf4f945c4127744"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-gridfs/zipball/a0f9ba1b763619045796cfbcacf4f945c4127744",
+                "reference": "a0f9ba1b763619045796cfbcacf4f945c4127744",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\GridFS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Flysystem adapter for MongoDB GridFS",
+            "time": "2015-01-21 22:20:08"
         },
         {
             "name": "league/flysystem-rackspace",
