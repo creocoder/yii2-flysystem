@@ -645,7 +645,7 @@ foreach ($listing as $object) {
 }
 ```
 
-### Getting file into with explicit metadata
+### Getting file info with explicit metadata
 
 To get file info with explicit metadata
 
