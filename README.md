@@ -419,7 +419,7 @@ To read file
 $contents = Yii::$app->fs->read('filename.ext');
 ```
 
-To retreive a read-stream
+To retrieve a read-stream
 
 ```php
 $stream = Yii::$app->fs->readStream('filename.ext');
