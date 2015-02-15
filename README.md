@@ -226,6 +226,36 @@ return [
 ];
 ```
 
+### GridFS filesystem
+
+Either run
+
+```bash
+$ composer require league/flysystem-gridfs
+```
+
+or add
+
+```
+"league/flysystem-gridfs": "~1.0"
+```
+
+to the `require` section of your `composer.json` file and configure application `components` as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'gridFs' => [
+            'class' => 'creocoder\flysystem\GridFSFilesystem',
+            'server' => 'mongodb://localhost:27017',
+            'database' => 'your-database',
+        ],
+    ],
+];
+```
+
 ### Rackspace filesystem
 
 Either run
