@@ -35,14 +35,6 @@ class FtpFilesystem extends Filesystem
      */
     public $password;
     /**
-     * @var string
-     */
-    public $root;
-    /**
-     * @var boolean
-     */
-    public $passive;
-    /**
      * @var boolean
      */
     public $ssl;
@@ -51,6 +43,10 @@ class FtpFilesystem extends Filesystem
      */
     public $timeout;
     /**
+     * @var string
+     */
+    public $root;
+    /**
      * @var integer
      */
     public $permPrivate;
@@ -58,6 +54,10 @@ class FtpFilesystem extends Filesystem
      * @var integer
      */
     public $permPublic;
+    /**
+     * @var boolean
+     */
+    public $passive;
     /**
      * @var integer
      */
@@ -91,12 +91,12 @@ class FtpFilesystem extends Filesystem
             'port',
             'username',
             'password',
-            'root',
-            'passive',
             'ssl',
             'timeout',
+            'root',
             'permPrivate',
             'permPublic',
+            'passive',
             'transferMode',
         ] as $name) {
             if ($this->$name !== null) {
