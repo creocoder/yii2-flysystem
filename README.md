@@ -290,6 +290,43 @@ return [
 ];
 ```
 
+### SFTP filesystem
+
+Either run
+
+```bash
+$ composer require league/flysystem-sftp
+```
+
+or add
+
+```
+"league/flysystem-sftp": "~1.0"
+```
+
+to the `require` section of your `composer.json` file and configure application `components` as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'sftpFs' => [
+            'class' => 'creocoder\flysystem\FtpFilesystem',
+            'host' => 'sftp.example.com',
+            // 'port' => 22,
+            'username' => 'your-username',
+            'password' => 'your-password',
+            'privateKey' => '/path/to/or/contents/of/privatekey',
+            // 'timeout' => 60,
+            // 'root' => '/path/to/root',
+            // 'permPrivate' => 0700,
+            // 'permPublic' => 0744,
+        ],
+    ],
+];
+```
+
 ### WebDAV filesystem
 
 Either run
