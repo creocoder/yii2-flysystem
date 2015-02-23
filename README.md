@@ -312,7 +312,7 @@ return [
     'components' => [
         //...
         'sftpFs' => [
-            'class' => 'creocoder\flysystem\FtpFilesystem',
+            'class' => 'creocoder\flysystem\SftpFilesystem',
             'host' => 'sftp.example.com',
             // 'port' => 22,
             'username' => 'your-username',
