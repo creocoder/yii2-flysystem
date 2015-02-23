@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "373b574df00ef498dc13d09a8f2d7992",
+    "hash": "79d721b10bd6a5058cff6c09dc97a02f",
     "packages": [
         {
             "name": "bower-asset/jquery",
@@ -486,16 +486,16 @@
     "packages-dev": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "2.7.18",
+            "version": "2.7.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "470ca90e2d511f64f082c569864f22f2c18fdc38"
+                "reference": "a3275993df4414bcaa61177df5a8d2ce502f927b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/470ca90e2d511f64f082c569864f22f2c18fdc38",
-                "reference": "470ca90e2d511f64f082c569864f22f2c18fdc38",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a3275993df4414bcaa61177df5a8d2ce502f927b",
+                "reference": "a3275993df4414bcaa61177df5a8d2ce502f927b",
                 "shasum": ""
             },
             "require": {
@@ -549,7 +549,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-02-12 20:56:39"
+            "time": "2015-02-20 18:30:16"
         },
         {
             "name": "barracuda/copy",
@@ -1343,18 +1343,18 @@
         },
         {
             "name": "pear-pear.php.net/Console_Getopt",
-            "version": "1.3.1",
+            "version": "1.4.0",
             "dist": {
                 "type": "file",
-                "url": "http://pear.php.net/get/Console_Getopt-1.3.1.tgz",
+                "url": "http://pear.php.net/get/Console_Getopt-1.4.0.tgz",
                 "reference": null,
                 "shasum": null
             },
             "require": {
-                "php": ">=4.3.0.0"
+                "php": ">=5.4.0.0"
             },
             "replace": {
-                "pear-pear/console_getopt": "== 1.3.1.0"
+                "pear-pear/console_getopt": "== 1.4.0.0"
             },
             "type": "pear-library",
             "autoload": {

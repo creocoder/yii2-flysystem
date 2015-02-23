@@ -3,7 +3,8 @@
     "description": "The flysystem extension for the Yii framework",
     "keywords": [
         "yii2",
-        "flysystem"
+        "flysystem",
+        "filesystem"
     ],
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
