@@ -20,7 +20,7 @@ $ composer require creocoder/yii2-flysystem
 or add
 
 ```
-"creocoder/yii2-flysystem": "0.7.*"
+"creocoder/yii2-flysystem": "0.8.*"
 ```
 
 to the `require` section of your `composer.json` file.
