@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "79d721b10bd6a5058cff6c09dc97a02f",
+    "hash": "9792244f513efd8af343d363ed0c85ee",
     "packages": [
         {
             "name": "bower-asset/jquery",
@@ -486,16 +486,16 @@
     "packages-dev": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "2.7.19",
+            "version": "2.7.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "a3275993df4414bcaa61177df5a8d2ce502f927b"
+                "reference": "2c9d93fbe680f64a84f5877209904f414d5cf92f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a3275993df4414bcaa61177df5a8d2ce502f927b",
-                "reference": "a3275993df4414bcaa61177df5a8d2ce502f927b",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2c9d93fbe680f64a84f5877209904f414d5cf92f",
+                "reference": "2c9d93fbe680f64a84f5877209904f414d5cf92f",
                 "shasum": ""
             },
             "require": {
@@ -549,7 +549,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2015-02-20 18:30:16"
+            "time": "2015-02-24 00:04:06"
         },
         {
             "name": "barracuda/copy",
@@ -593,16 +593,16 @@
         },
         {
             "name": "dropbox/dropbox-sdk",
-            "version": "v1.1.4",
+            "version": "v1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dropbox/dropbox-sdk-php.git",
-                "reference": "73e5add2f6d5d0355fa04e758f895e10c08d240a"
+                "reference": "138bfec02f042fa6a4b384c0ae7ebe92ad122bbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dropbox/dropbox-sdk-php/zipball/73e5add2f6d5d0355fa04e758f895e10c08d240a",
-                "reference": "73e5add2f6d5d0355fa04e758f895e10c08d240a",
+                "url": "https://api.github.com/repos/dropbox/dropbox-sdk-php/zipball/138bfec02f042fa6a4b384c0ae7ebe92ad122bbd",
+                "reference": "138bfec02f042fa6a4b384c0ae7ebe92ad122bbd",
                 "shasum": ""
             },
             "require": {
@@ -628,7 +628,7 @@
             "keywords": [
                 "dropbox"
             ],
-            "time": "2014-10-21 21:09:01"
+            "time": "2015-02-23 20:51:29"
         },
         {
             "name": "eher/oauth",
@@ -1131,16 +1131,16 @@
         },
         {
             "name": "league/flysystem-sftp",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-sftp.git",
-                "reference": "7094b5ddea6262f5e29596609dccae041ed108df"
+                "reference": "df8f5453d7ecee5dff35572d84510387e8e8cf12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-sftp/zipball/7094b5ddea6262f5e29596609dccae041ed108df",
-                "reference": "7094b5ddea6262f5e29596609dccae041ed108df",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-sftp/zipball/df8f5453d7ecee5dff35572d84510387e8e8cf12",
+                "reference": "df8f5453d7ecee5dff35572d84510387e8e8cf12",
                 "shasum": ""
             },
             "require": {
@@ -1174,7 +1174,7 @@
                 }
             ],
             "description": "Flysystem adapter for SFTP",
-            "time": "2015-02-01 16:15:51"
+            "time": "2015-02-23 20:04:22"
         },
         {
             "name": "league/flysystem-webdav",
@@ -1785,16 +1785,16 @@
         },
         {
             "name": "sabre/dav",
-            "version": "2.1.2",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fruux/sabre-dav.git",
-                "reference": "33b602b182445b41c480a5115884e62c2acccc7a"
+                "reference": "6a8aec204688d36681e0185fbaf1974b97e4a070"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fruux/sabre-dav/zipball/33b602b182445b41c480a5115884e62c2acccc7a",
-                "reference": "33b602b182445b41c480a5115884e62c2acccc7a",
+                "url": "https://api.github.com/repos/fruux/sabre-dav/zipball/6a8aec204688d36681e0185fbaf1974b97e4a070",
+                "reference": "6a8aec204688d36681e0185fbaf1974b97e4a070",
                 "shasum": ""
             },
             "require": {
@@ -1810,7 +1810,7 @@
                 "php": ">=5.4.1",
                 "sabre/event": "~2.0.0",
                 "sabre/http": "~3.0.0",
-                "sabre/vobject": "~3.3.4"
+                "sabre/vobject": "~3.3"
             },
             "require-dev": {
                 "evert/phpdoc-md": "~0.1.0",
@@ -1855,7 +1855,7 @@
                 "framework",
                 "iCalendar"
             ],
-            "time": "2014-12-10 21:51:51"
+            "time": "2015-02-25 18:13:20"
         },
         {
             "name": "sabre/event",
@@ -1957,16 +1957,16 @@
         },
         {
             "name": "sabre/vobject",
-            "version": "3.3.5",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fruux/sabre-vobject.git",
-                "reference": "77cb636a5bde4c19d7522c2c548b258859ddd1ef"
+                "reference": "0c90f60dae40137f1903c7b5915d3691c4fc99b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fruux/sabre-vobject/zipball/77cb636a5bde4c19d7522c2c548b258859ddd1ef",
-                "reference": "77cb636a5bde4c19d7522c2c548b258859ddd1ef",
+                "url": "https://api.github.com/repos/fruux/sabre-vobject/zipball/0c90f60dae40137f1903c7b5915d3691c4fc99b0",
+                "reference": "0c90f60dae40137f1903c7b5915d3691c4fc99b0",
                 "shasum": ""
             },
             "require": {
@@ -2019,7 +2019,7 @@
                 "jCard",
                 "vCard"
             ],
-            "time": "2015-01-10 00:54:52"
+            "time": "2015-02-25 17:47:50"
         },
         {
             "name": "symfony/event-dispatcher",
