@@ -68,7 +68,7 @@ class SftpFilesystem extends Filesystem
             throw new InvalidConfigException('The "username" property must be set.');
         }
 
-        if ($this->password === null || $this->privateKey === null) {
+        if ($this->password === null && $this->privateKey === null) {
             throw new InvalidConfigException('Either "password" or "privateKey" property must be set.');
         }
 
