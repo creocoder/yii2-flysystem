@@ -54,6 +54,10 @@ class SftpFilesystem extends Filesystem
      * @var integer
      */
     public $permPublic;
+    /**
+     * @var integer
+     */
+    public $directoryPerm;
 
     /**
      * @inheritdoc
@@ -96,6 +100,7 @@ class SftpFilesystem extends Filesystem
             'privateKey',
             'permPrivate',
             'permPublic',
+            'directoryPerm',
         ] as $name) {
             if ($this->$name !== null) {
                 $config[$name] = $this->$name;
