@@ -50,6 +50,10 @@ class AwsS3Filesystem extends Filesystem
      * @var array
      */
     public $options = [];
+    /**
+     * @var string
+     */
+    public $endpoint;
 
     /**
      * @inheritdoc
@@ -89,6 +93,10 @@ class AwsS3Filesystem extends Filesystem
 
         if ($this->baseUrl !== null) {
             $config['base_url'] = $this->baseUrl;
+        }
+
+        if ($this->endpoint !== null) {
+            $config['endpoint'] = $this->endpoint;
         }
 
         $config['version'] = (($this->version !== null) ? $this->version : 'latest');
