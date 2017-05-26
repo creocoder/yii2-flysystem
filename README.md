@@ -118,6 +118,7 @@ return [
             // 'baseUrl' => 'your-base-url',
             // 'prefix' => 'your-prefix',
             // 'options' => [],
+            // 'endpoint' => 'http://my-custom-url'
         ],
     ],
 ];
