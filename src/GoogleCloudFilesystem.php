@@ -58,7 +58,7 @@ class GoogleCloudFilesystem extends Filesystem
     {
         $config = [
                 'projectId' => $this->projectId,
-                'keyFilePath' => $this->keyFilePath
+                'keyFilePath' => \Yii::getAlias($this->keyFilePath),
         ];
 
         $client = new StorageClient($config);
