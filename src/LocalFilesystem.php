@@ -24,6 +24,11 @@ class LocalFilesystem extends Filesystem
     public $path;
 
     /**
+     * @var integer
+     */
+    public $writeFlags = 2;
+
+    /**
      * @inheritdoc
      */
     public function init()
@@ -42,6 +47,6 @@ class LocalFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        return new Local($this->path);
+        return new Local($this->path, $this->writeFlags);
     }
 }
