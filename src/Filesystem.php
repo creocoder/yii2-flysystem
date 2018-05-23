@@ -127,4 +127,13 @@ abstract class Filesystem extends Component
     {
         return call_user_func_array([$this->filesystem, $method], $parameters);
     }
+
+    /**
+     * @return \League\Flysystem\FilesystemInterface
+     */
+    public function getFileSystem()
+    {
+        return $this->filesystem;
+    }
+    
 }
