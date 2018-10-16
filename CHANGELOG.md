@@ -1,5 +1,7 @@
 # CHANGELOG
 
+- AWS S3: added `pathStyleEndpoint` to allow the use of https://www.minio.io/ as storage service
+
 ## 0.9.1
 
 - all adapters: added getter for native filesystem `getFilesystem()`
