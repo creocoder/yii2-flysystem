@@ -47,6 +47,10 @@ class AwsS3Filesystem extends Filesystem
      */
     public $prefix;
     /**
+     * @var bool
+     */
+    public $pathStyleEndpoint = false;
+    /**
      * @var array
      */
     public $options = [];
@@ -86,6 +90,10 @@ class AwsS3Filesystem extends Filesystem
                 'secret' => $this->secret
             ]
         ];
+
+        if ($this->pathStyleEndpoint === true) {
+            $config['use_path_style_endpoint'] = true;
+        }
 
         if ($this->region !== null) {
             $config['region'] = $this->region;
