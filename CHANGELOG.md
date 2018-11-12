@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.9.3
+
+- AWS S3: added `credentials` for custom credential provider
+
 ## 0.9.2
 
 - AWS S3: added `pathStyleEndpoint` to allow the use of https://www.minio.io/ as storage service
