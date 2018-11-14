@@ -58,18 +58,24 @@ class AwsS3Filesystem extends Filesystem
      * @var string
      */
     public $endpoint;
+    /**
+     * @var array|\Aws\CacheInterface|\Aws\Credentials\CredentialsInterface|bool|callable
+     */
+    public $credentials;
 
     /**
      * @inheritdoc
      */
     public function init()
     {
-        if ($this->key === null) {
-            throw new InvalidConfigException('The "key" property must be set.');
-        }
+        if ($this->credentials === null) {
+            if ($this->key === null) {
+                throw new InvalidConfigException('The "key" property must be set.');
+            }
 
-        if ($this->secret === null) {
-            throw new InvalidConfigException('The "secret" property must be set.');
+            if ($this->secret === null) {
+                throw new InvalidConfigException('The "secret" property must be set.');
+            }
         }
 
         if ($this->bucket === null) {
@@ -84,12 +90,14 @@ class AwsS3Filesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        $config = [
-            'credentials' => [
-                'key' => $this->key,
-                'secret' => $this->secret
-            ]
-        ];
+        $config = [];
+
+        if ($this->credentials === null) {
+            $config['credentials'] = ['key' => $this->key, 'secret' => $this->secret];
+        } else {
+            $config['credentials'] = $this->credentials;
+        }
+
 
         if ($this->pathStyleEndpoint === true) {
             $config['use_path_style_endpoint'] = true;
