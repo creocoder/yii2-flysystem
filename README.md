@@ -228,6 +228,33 @@ return [
 ];
 ```
 
+## Google Cloud filesystem
+
+Run
+
+```bash
+$ composer require "superbalist/flysystem-google-storage": "^5.0"
+```
+
+and configure application `components` as follows
+
+```php
+return [
+    //...
+    'components' => [
+        //...
+        'googleCloudFs' => [
+            'class' => 'creocoder\flysystem\GoogleCloudFilesystem',
+            'projectId' => 'GOOGLE_PROJECT_ID',
+            'bucket' => 'GOOGLE_BUCKET',
+            'keyFilePath' => 'GOOGLE_KEY_FILE_PATH',
+        ],
+    ],
+];
+```
+
+> Note: Credential configuration is read from the *keyFile*.
+
 ### GridFS filesystem
 
 Either run
