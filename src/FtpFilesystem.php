@@ -62,6 +62,10 @@ class FtpFilesystem extends Filesystem
      * @var integer
      */
     public $transferMode;
+    /**
+     * @var bool
+     */
+    public $enableTimestampsOnUnixListings = false;
 
     /**
      * @inheritdoc
@@ -98,6 +102,7 @@ class FtpFilesystem extends Filesystem
             'permPublic',
             'passive',
             'transferMode',
+            'enableTimestampsOnUnixListings',
         ] as $name) {
             if ($this->$name !== null) {
                 $config[$name] = $this->$name;
