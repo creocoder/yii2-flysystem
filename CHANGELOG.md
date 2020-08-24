@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.10.0
+
+- Updated Dropbox adapter
+
 ## 0.9.3
 
 - AWS S3: added `credentials` for custom credential provider
