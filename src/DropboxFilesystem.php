@@ -7,8 +7,8 @@
 
 namespace creocoder\flysystem;
 
-use Dropbox\Client;
-use League\Flysystem\Dropbox\DropboxAdapter;
+use Spatie\Dropbox\Client;
+use Spatie\FlysystemDropbox\DropboxAdapter;
 use yii\base\InvalidConfigException;
 
 /**
@@ -53,8 +53,7 @@ class DropboxFilesystem extends Filesystem
     protected function prepareAdapter()
     {
         return new DropboxAdapter(
-            new Client($this->token, $this->app),
-            $this->prefix
+            new Client($this->token, $this->prefix),
         );
     }
 }
