@@ -55,6 +55,10 @@ class AwsS3Filesystem extends Filesystem
      */
     public $options = [];
     /**
+     * @var bool
+     */
+    public $streamReads = false;
+    /**
      * @var string
      */
     public $endpoint;
@@ -119,6 +123,6 @@ class AwsS3Filesystem extends Filesystem
 
         $client = new S3Client($config);
 
-        return new AwsS3Adapter($client, $this->bucket, $this->prefix, $this->options);
+        return new AwsS3Adapter($client, $this->bucket, $this->prefix, $this->options, $this->streamReads);
     }
 }

@@ -42,6 +42,9 @@
         "league/flysystem-webdav": "~1.0",
         "league/flysystem-ziparchive": "~1.0"
     },
+    "conflict": {
+        "league/flysystem-aws-s3-v3": "<1.0.26"
+    },
     "repositories": [
         {
             "type": "pear",
