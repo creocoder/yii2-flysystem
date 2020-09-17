@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.0-rc1
+
+- added `streamReads` param for AWS
+
 ## 0.10.0
 
 - Updated Dropbox adapter
