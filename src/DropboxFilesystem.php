@@ -8,6 +8,7 @@
 namespace creocoder\flysystem;
 
 use Spatie\Dropbox\Client;
+use Spatie\Dropbox\TokenProvider;
 use Spatie\FlysystemDropbox\DropboxAdapter;
 use yii\base\InvalidConfigException;
 
@@ -19,7 +20,7 @@ use yii\base\InvalidConfigException;
 class DropboxFilesystem extends Filesystem
 {
     /**
-     * @var string
+     * @var string|array|TokenProvider
      */
     public $token;
 
