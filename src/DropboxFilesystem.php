@@ -8,6 +8,7 @@
 namespace creocoder\flysystem;
 
 use Spatie\Dropbox\Client;
+use Spatie\Dropbox\TokenProvider;
 use Spatie\FlysystemDropbox\DropboxAdapter;
 use yii\base\InvalidConfigException;
 
@@ -19,17 +20,14 @@ use yii\base\InvalidConfigException;
 class DropboxFilesystem extends Filesystem
 {
     /**
-     * @var string
+     * @var string|array|TokenProvider
      */
     public $token;
-    /**
-     * @var string
-     */
-    public $app;
+
     /**
      * @var string|null
      */
-    public $prefix;
+    public $prefix = '';
 
     /**
      * @inheritdoc
@@ -38,10 +36,6 @@ class DropboxFilesystem extends Filesystem
     {
         if ($this->token === null) {
             throw new InvalidConfigException('The "token" property must be set.');
-        }
-
-        if ($this->app === null) {
-            throw new InvalidConfigException('The "app" property must be set.');
         }
 
         parent::init();
@@ -53,7 +47,8 @@ class DropboxFilesystem extends Filesystem
     protected function prepareAdapter()
     {
         return new DropboxAdapter(
-            new Client($this->token, $this->prefix),
+            new Client($this->token),
+            $this->prefix
         );
     }
 }
