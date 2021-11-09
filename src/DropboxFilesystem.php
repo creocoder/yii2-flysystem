@@ -22,14 +22,11 @@ class DropboxFilesystem extends Filesystem
      * @var string
      */
     public $token;
-    /**
-     * @var string
-     */
-    public $app;
+
     /**
      * @var string|null
      */
-    public $prefix;
+    public $prefix = '';
 
     /**
      * @inheritdoc
@@ -38,10 +35,6 @@ class DropboxFilesystem extends Filesystem
     {
         if ($this->token === null) {
             throw new InvalidConfigException('The "token" property must be set.');
-        }
-
-        if ($this->app === null) {
-            throw new InvalidConfigException('The "app" property must be set.');
         }
 
         parent::init();
