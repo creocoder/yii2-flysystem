@@ -1,7 +1,5 @@
 # CHANGELOG
 
-
-
 ## 1.1.1
 
 - Added argument overrides for Local filesystem adapter
