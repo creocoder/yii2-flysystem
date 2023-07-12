@@ -39,6 +39,9 @@ return [
         'fs' => [
             'class' => 'creocoder\flysystem\LocalFilesystem',
             'path' => '@webroot/files',
+            // 'writeFlags' => LOCK_EX,
+            // 'linkHandling' => 0002,
+            // 'permissions' => [],
         ],
     ],
 ];
