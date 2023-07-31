@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.1.1
+
+- Added argument overrides for Local filesystem adapter
+
+## 1.1.0
+
 - Fix Dropbox adapter not working
 
 ## 1.0.0-rc1
