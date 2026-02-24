@@ -20,12 +20,12 @@ use yii\base\InvalidConfigException;
 class DropboxFilesystem extends Filesystem
 {
     /**
-     * @var string|array|TokenProvider
+     * @var string|array|TokenProvider Access token or token provider
      */
     public $token;
 
     /**
-     * @var string|null
+     * @var string Path prefix within Dropbox
      */
     public $prefix = '';
 
@@ -46,9 +46,8 @@ class DropboxFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        return new DropboxAdapter(
-            new Client($this->token),
-            $this->prefix
-        );
+        $client = new Client($this->token);
+
+        return new DropboxAdapter($client, $this->prefix);
     }
 }

@@ -7,7 +7,10 @@
 
 namespace creocoder\flysystem;
 
-use League\Flysystem\Sftp\SftpAdapter;
+use League\Flysystem\PhpseclibV3\SftpAdapter;
+use League\Flysystem\PhpseclibV3\SftpConnectionProvider;
+use League\Flysystem\UnixVisibility\PortableVisibilityConverter;
+use League\Flysystem\Visibility;
 use Yii;
 use yii\base\InvalidConfigException;
 
@@ -22,42 +25,76 @@ class SftpFilesystem extends Filesystem
      * @var string
      */
     public $host;
+
     /**
-     * @var string
+     * @var int
      */
-    public $port;
+    public $port = 22;
+
     /**
      * @var string
      */
     public $username;
+
     /**
-     * @var string
+     * @var string|null
      */
     public $password;
+
     /**
-     * @var integer
+     * @var int
      */
-    public $timeout;
+    public $timeout = 10;
+
     /**
      * @var string
      */
-    public $root;
+    public $root = '/';
+
     /**
-     * @var string
+     * @var string|null
      */
     public $privateKey;
+
     /**
-     * @var integer
+     * @var string|null
      */
-    public $permPrivate;
+    public $passphrase;
+
     /**
-     * @var integer
+     * @var bool
      */
-    public $permPublic;
+    public $useAgent = false;
+
     /**
-     * @var integer
+     * @var int File permission for private files
      */
-    public $directoryPerm;
+    public $filePrivate = 0640;
+
+    /**
+     * @var int File permission for public files
+     */
+    public $filePublic = 0644;
+
+    /**
+     * @var int Directory permission for private directories
+     */
+    public $directoryPrivate = 0740;
+
+    /**
+     * @var int Directory permission for public directories
+     */
+    public $directoryPublic = 0755;
+
+    /**
+     * @var string Default visibility for files
+     */
+    public $defaultForFiles = Visibility::PRIVATE;
+
+    /**
+     * @var string Default visibility for directories
+     */
+    public $defaultForDirectories = Visibility::PRIVATE;
 
     /**
      * @inheritdoc
@@ -72,8 +109,8 @@ class SftpFilesystem extends Filesystem
             throw new InvalidConfigException('The "username" property must be set.');
         }
 
-        if ($this->password === null && $this->privateKey === null) {
-            throw new InvalidConfigException('Either "password" or "privateKey" property must be set.');
+        if ($this->password === null && $this->privateKey === null && $this->useAgent === false) {
+            throw new InvalidConfigException('Either "password", "privateKey", or "useAgent" property must be set.');
         }
 
         if ($this->root !== null) {
@@ -88,25 +125,32 @@ class SftpFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        $config = [];
+        $connectionProvider = new SftpConnectionProvider(
+            $this->host,
+            $this->username,
+            $this->password,
+            $this->privateKey,
+            $this->passphrase,
+            $this->port,
+            $this->useAgent,
+            $this->timeout
+        );
 
-        foreach ([
-            'host',
-            'port',
-            'username',
-            'password',
-            'timeout',
-            'root',
-            'privateKey',
-            'permPrivate',
-            'permPublic',
-            'directoryPerm',
-        ] as $name) {
-            if ($this->$name !== null) {
-                $config[$name] = $this->$name;
-            }
-        }
+        $visibility = PortableVisibilityConverter::fromArray([
+            'file' => [
+                'public' => $this->filePublic,
+                'private' => $this->filePrivate,
+            ],
+            'dir' => [
+                'public' => $this->directoryPublic,
+                'private' => $this->directoryPrivate,
+            ],
+        ], $this->defaultForFiles, $this->defaultForDirectories);
 
-        return new SftpAdapter($config);
+        return new SftpAdapter(
+            $connectionProvider,
+            $this->root,
+            $visibility
+        );
     }
 }

@@ -7,7 +7,10 @@
 
 namespace creocoder\flysystem;
 
-use League\Flysystem\Adapter\Ftp;
+use League\Flysystem\Ftp\FtpAdapter;
+use League\Flysystem\Ftp\FtpConnectionOptions;
+use League\Flysystem\UnixVisibility\PortableVisibilityConverter;
+use League\Flysystem\Visibility;
 use Yii;
 use yii\base\InvalidConfigException;
 
@@ -22,50 +25,101 @@ class FtpFilesystem extends Filesystem
      * @var string
      */
     public $host;
+
     /**
-     * @var integer
+     * @var int
      */
-    public $port;
-    /**
-     * @var string
-     */
-    public $username;
+    public $port = 21;
+
     /**
      * @var string
      */
-    public $password;
-    /**
-     * @var boolean
-     */
-    public $ssl;
-    /**
-     * @var integer
-     */
-    public $timeout;
+    public $username = 'anonymous';
+
     /**
      * @var string
      */
-    public $root;
-    /**
-     * @var integer
-     */
-    public $permPrivate;
-    /**
-     * @var integer
-     */
-    public $permPublic;
-    /**
-     * @var boolean
-     */
-    public $passive;
-    /**
-     * @var integer
-     */
-    public $transferMode;
+    public $password = '';
+
     /**
      * @var bool
      */
-    public $enableTimestampsOnUnixListings = false;
+    public $ssl = false;
+
+    /**
+     * @var int
+     */
+    public $timeout = 90;
+
+    /**
+     * @var string
+     */
+    public $root = '';
+
+    /**
+     * @var bool
+     */
+    public $passive = true;
+
+    /**
+     * @var int
+     */
+    public $transferMode = FTP_BINARY;
+
+    /**
+     * @var string|null
+     */
+    public $systemType;
+
+    /**
+     * @var bool
+     */
+    public $utf8 = false;
+
+    /**
+     * @var bool
+     */
+    public $ignorePassiveAddress = true;
+
+    /**
+     * @var bool
+     */
+    public $timestampsOnUnixListingsEnabled = false;
+
+    /**
+     * @var bool
+     */
+    public $recurseManually = true;
+
+    /**
+     * @var int File permission for private files
+     */
+    public $filePrivate = 0640;
+
+    /**
+     * @var int File permission for public files
+     */
+    public $filePublic = 0644;
+
+    /**
+     * @var int Directory permission for private directories
+     */
+    public $directoryPrivate = 0740;
+
+    /**
+     * @var int Directory permission for public directories
+     */
+    public $directoryPublic = 0755;
+
+    /**
+     * @var string Default visibility for files
+     */
+    public $defaultForFiles = Visibility::PRIVATE;
+
+    /**
+     * @var string Default visibility for directories
+     */
+    public $defaultForDirectories = Visibility::PRIVATE;
 
     /**
      * @inheritdoc
@@ -76,7 +130,7 @@ class FtpFilesystem extends Filesystem
             throw new InvalidConfigException('The "host" property must be set.');
         }
 
-        if ($this->root !== null) {
+        if ($this->root !== null && $this->root !== '') {
             $this->root = Yii::getAlias($this->root);
         }
 
@@ -84,31 +138,38 @@ class FtpFilesystem extends Filesystem
     }
 
     /**
-     * @return Ftp
+     * @return FtpAdapter
      */
     protected function prepareAdapter()
     {
-        $config = [];
+        $options = FtpConnectionOptions::fromArray([
+            'host' => $this->host,
+            'port' => $this->port,
+            'username' => $this->username,
+            'password' => $this->password,
+            'ssl' => $this->ssl,
+            'timeout' => $this->timeout,
+            'root' => $this->root,
+            'passive' => $this->passive,
+            'transferMode' => $this->transferMode,
+            'systemType' => $this->systemType,
+            'utf8' => $this->utf8,
+            'ignorePassiveAddress' => $this->ignorePassiveAddress,
+            'timestampsOnUnixListingsEnabled' => $this->timestampsOnUnixListingsEnabled,
+            'recurseManually' => $this->recurseManually,
+        ]);
 
-        foreach ([
-            'host',
-            'port',
-            'username',
-            'password',
-            'ssl',
-            'timeout',
-            'root',
-            'permPrivate',
-            'permPublic',
-            'passive',
-            'transferMode',
-            'enableTimestampsOnUnixListings',
-        ] as $name) {
-            if ($this->$name !== null) {
-                $config[$name] = $this->$name;
-            }
-        }
+        $visibility = PortableVisibilityConverter::fromArray([
+            'file' => [
+                'public' => $this->filePublic,
+                'private' => $this->filePrivate,
+            ],
+            'dir' => [
+                'public' => $this->directoryPublic,
+                'private' => $this->directoryPrivate,
+            ],
+        ], $this->defaultForFiles, $this->defaultForDirectories);
 
-        return new Ftp($config);
+        return new FtpAdapter($options, null, $visibility);
     }
 }

@@ -8,7 +8,7 @@
 namespace creocoder\flysystem;
 
 use League\Flysystem\GridFS\GridFSAdapter;
-use MongoClient;
+use MongoDB\Client;
 use yii\base\InvalidConfigException;
 
 /**
@@ -19,23 +19,35 @@ use yii\base\InvalidConfigException;
 class GridFSFilesystem extends Filesystem
 {
     /**
-     * @var string
+     * @var string MongoDB connection URI
      */
-    public $server;
+    public $uri = 'mongodb://localhost:27017';
+
     /**
      * @var string
      */
     public $database;
 
     /**
+     * @var string GridFS bucket name
+     */
+    public $bucketName = 'fs';
+
+    /**
+     * @var array MongoDB connection options
+     */
+    public $uriOptions = [];
+
+    /**
+     * @var array MongoDB driver options
+     */
+    public $driverOptions = [];
+
+    /**
      * @inheritdoc
      */
     public function init()
     {
-        if ($this->server === null) {
-            throw new InvalidConfigException('The "server" property must be set.');
-        }
-
         if ($this->database === null) {
             throw new InvalidConfigException('The "database" property must be set.');
         }
@@ -48,6 +60,11 @@ class GridFSFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        return new GridFSAdapter((new MongoClient($this->server))->selectDB($this->database)->getGridFS());
+        $client = new Client($this->uri, $this->uriOptions, $this->driverOptions);
+        $bucket = $client->selectDatabase($this->database)->selectGridFSBucket([
+            'bucketName' => $this->bucketName,
+        ]);
+
+        return new GridFSAdapter($bucket);
     }
 }

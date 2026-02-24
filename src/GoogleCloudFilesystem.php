@@ -8,7 +8,9 @@
 namespace creocoder\flysystem;
 
 use Google\Cloud\Storage\StorageClient;
-use Superbalist\Flysystem\GoogleStorage\GoogleStorageAdapter;
+use League\Flysystem\GoogleCloudStorage\GoogleCloudStorageAdapter;
+use League\Flysystem\Visibility;
+use Yii;
 use yii\base\InvalidConfigException;
 
 /**
@@ -22,14 +24,26 @@ class GoogleCloudFilesystem extends Filesystem
      * @var string
      */
     public $projectId;
+
     /**
      * @var string
      */
     public $keyFilePath;
+
     /**
      * @var string
      */
     public $bucket;
+
+    /**
+     * @var string
+     */
+    public $prefix = '';
+
+    /**
+     * @var string Default visibility for files
+     */
+    public $defaultVisibility = Visibility::PRIVATE;
 
     /**
      * @inheritdoc
@@ -41,7 +55,7 @@ class GoogleCloudFilesystem extends Filesystem
         }
 
         if ($this->keyFilePath === null) {
-            throw new InvalidConfigException('The "secret" property must be set.');
+            throw new InvalidConfigException('The "keyFilePath" property must be set.');
         }
 
         if ($this->bucket === null) {
@@ -52,17 +66,23 @@ class GoogleCloudFilesystem extends Filesystem
     }
 
     /**
-     * @return GoogleStorageAdapter
+     * @return GoogleCloudStorageAdapter
      */
     protected function prepareAdapter()
     {
         $config = [
-                'projectId' => $this->projectId,
-                'keyFilePath' => \Yii::getAlias($this->keyFilePath),
+            'projectId' => $this->projectId,
+            'keyFilePath' => Yii::getAlias($this->keyFilePath),
         ];
 
         $client = new StorageClient($config);
         $bucket = $client->bucket($this->bucket);
-        return  new GoogleStorageAdapter($client, $bucket);
+
+        return new GoogleCloudStorageAdapter(
+            $bucket,
+            $this->prefix,
+            null,
+            $this->defaultVisibility
+        );
     }
 }

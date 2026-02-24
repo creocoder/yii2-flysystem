@@ -7,6 +7,7 @@
 
 namespace creocoder\flysystem;
 
+use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Yii;
 use yii\base\InvalidConfigException;
@@ -22,10 +23,11 @@ class ZipArchiveFilesystem extends Filesystem
      * @var string
      */
     public $path;
+
     /**
-     * @var string|null
+     * @var string
      */
-    public $prefix;
+    public $prefix = '';
 
     /**
      * @inheritdoc
@@ -46,9 +48,10 @@ class ZipArchiveFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
+        $provider = new FilesystemZipArchiveProvider($this->path);
+
         return new ZipArchiveAdapter(
-            $this->path,
-            null,
+            $provider,
             $this->prefix
         );
     }

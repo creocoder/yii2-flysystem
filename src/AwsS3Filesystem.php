@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://github.com/creocoder/yii2-flysystem
  * @copyright Copyright (c) 2015 Alexander Kochetov
@@ -8,7 +9,9 @@
 namespace creocoder\flysystem;
 
 use Aws\S3\S3Client;
-use League\Flysystem\AwsS3v3\AwsS3Adapter;
+use League\Flysystem\AwsS3V3\AwsS3V3Adapter;
+use League\Flysystem\AwsS3V3\PortableVisibilityConverter;
+use League\Flysystem\Visibility;
 use yii\base\InvalidConfigException;
 
 /**
@@ -22,50 +25,51 @@ class AwsS3Filesystem extends Filesystem
      * @var string
      */
     public $key;
+
     /**
      * @var string
      */
     public $secret;
+
     /**
      * @var string
      */
     public $region;
-    /**
-     * @var string
-     */
-    public $baseUrl;
+
     /**
      * @var string
      */
     public $version;
+
     /**
      * @var string
      */
     public $bucket;
+
     /**
-     * @var string|null
+     * @var string
      */
-    public $prefix;
+    public $prefix = '';
+
     /**
      * @var bool
      */
     public $pathStyleEndpoint = false;
-    /**
-     * @var array
-     */
-    public $options = [];
-    /**
-     * @var bool
-     */
-    public $streamReads = false;
+
     /**
      * @var string
      */
     public $endpoint;
+
     /**
      * @var array|\Aws\CacheInterface|\Aws\Credentials\CredentialsInterface|bool|callable
      */
     public $credentials;
+
+    /**
+     * @var string Default visibility for new files
+     */
+    public $defaultVisibility = Visibility::PRIVATE;
 
     /**
      * @inheritdoc
@@ -90,7 +94,7 @@ class AwsS3Filesystem extends Filesystem
     }
 
     /**
-     * @return AwsS3Adapter
+     * @return AwsS3V3Adapter
      */
     protected function prepareAdapter()
     {
@@ -102,7 +106,6 @@ class AwsS3Filesystem extends Filesystem
             $config['credentials'] = $this->credentials;
         }
 
-
         if ($this->pathStyleEndpoint === true) {
             $config['use_path_style_endpoint'] = true;
         }
@@ -111,18 +114,21 @@ class AwsS3Filesystem extends Filesystem
             $config['region'] = $this->region;
         }
 
-        if ($this->baseUrl !== null) {
-            $config['base_url'] = $this->baseUrl;
-        }
-
         if ($this->endpoint !== null) {
             $config['endpoint'] = $this->endpoint;
         }
 
-        $config['version'] = (($this->version !== null) ? $this->version : 'latest');
+        $config['version'] = $this->version ?? 'latest';
 
         $client = new S3Client($config);
 
-        return new AwsS3Adapter($client, $this->bucket, $this->prefix, $this->options, $this->streamReads);
+        $visibility = new PortableVisibilityConverter($this->defaultVisibility);
+
+        return new AwsS3V3Adapter(
+            $client,
+            $this->bucket,
+            $this->prefix,
+            $visibility
+        );
     }
 }

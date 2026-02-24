@@ -7,7 +7,9 @@
 
 namespace creocoder\flysystem;
 
-use League\Flysystem\Adapter\Local;
+use League\Flysystem\Local\LocalFilesystemAdapter;
+use League\Flysystem\UnixVisibility\PortableVisibilityConverter;
+use League\Flysystem\Visibility;
 use Yii;
 use yii\base\InvalidConfigException;
 
@@ -31,12 +33,37 @@ class LocalFilesystem extends Filesystem
     /**
      * @var int
      */
-    public $linkHandling = Local::DISALLOW_LINKS;
+    public $linkHandling = LocalFilesystemAdapter::DISALLOW_LINKS;
 
     /**
-     * @var array
+     * @var string Default visibility for files
      */
-    public $permissions = [];
+    public $defaultForFiles = Visibility::PRIVATE;
+
+    /**
+     * @var string Default visibility for directories
+     */
+    public $defaultForDirectories = Visibility::PRIVATE;
+
+    /**
+     * @var int File permission for private files
+     */
+    public $filePrivate = 0640;
+
+    /**
+     * @var int File permission for public files
+     */
+    public $filePublic = 0644;
+
+    /**
+     * @var int Directory permission for private directories
+     */
+    public $directoryPrivate = 0740;
+
+    /**
+     * @var int Directory permission for public directories
+     */
+    public $directoryPublic = 0755;
 
     /**
      * @inheritdoc
@@ -47,25 +74,32 @@ class LocalFilesystem extends Filesystem
             throw new InvalidConfigException('The "path" property must be set.');
         }
 
-        if (!in_array($this->writeFlags, [0, LOCK_SH, LOCK_EX, LOCK_UN, LOCK_NB], true)) {
-            throw new InvalidConfigException('The "writeFlags" property value is invalid.');
-        }
-
-        if ($this->linkHandling !== Local::DISALLOW_LINKS && $this->linkHandling !== Local::SKIP_LINKS) {
-            throw new InvalidConfigException('The "linkHandling" property value is invalid.');
-        }
-
         $this->path = Yii::getAlias($this->path);
 
         parent::init();
     }
 
     /**
-     * @return Local
+     * @return LocalFilesystemAdapter
      */
     protected function prepareAdapter()
     {
-        return new Local($this->path, $this->writeFlags, $this->linkHandling, $this->permissions);
+        $visibility = PortableVisibilityConverter::fromArray([
+            'file' => [
+                'public' => $this->filePublic,
+                'private' => $this->filePrivate,
+            ],
+            'dir' => [
+                'public' => $this->directoryPublic,
+                'private' => $this->directoryPrivate,
+            ],
+        ], $this->defaultForFiles, $this->defaultForDirectories);
+
+        return new LocalFilesystemAdapter(
+            $this->path,
+            $visibility,
+            $this->writeFlags,
+            $this->linkHandling
+        );
     }
 }
-

@@ -22,30 +22,41 @@ class WebDAVFilesystem extends Filesystem
      * @var string
      */
     public $baseUri;
-    /**
-     * @var string
-     */
-    public $userName;
-    /**
-     * @var string
-     */
-    public $password;
-    /**
-     * @var string
-     */
-    public $proxy;
-    /**
-     * @var integer
-     */
-    public $authType;
-    /**
-     * @var integer
-     */
-    public $encoding;
+
     /**
      * @var string|null
      */
-    public $prefix;
+    public $userName;
+
+    /**
+     * @var string|null
+     */
+    public $password;
+
+    /**
+     * @var string|null
+     */
+    public $proxy;
+
+    /**
+     * @var int|null
+     */
+    public $authType;
+
+    /**
+     * @var int|null
+     */
+    public $encoding;
+
+    /**
+     * @var string
+     */
+    public $prefix = '';
+
+    /**
+     * @var bool Whether to use manually set directory prefix in paths
+     */
+    public $useManuallySetPrefix = true;
 
     /**
      * @inheritdoc

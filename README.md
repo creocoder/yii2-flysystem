@@ -7,6 +7,8 @@
 This extension provides [Flysystem](http://flysystem.thephpleague.com/) integration for the Yii framework.
 [Flysystem](http://flysystem.thephpleague.com/) is a filesystem abstraction which allows you to easily swap out a local filesystem for a remote one.
 
+**This version requires Flysystem 3.x and PHP 8.1+**
+
 ## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
@@ -20,7 +22,7 @@ $ composer require creocoder/yii2-flysystem
 or add
 
 ```
-"creocoder/yii2-flysystem": "0.8.*"
+"creocoder/yii2-flysystem": "^2.0"
 ```
 
 to the `require` section of your `composer.json` file.
@@ -37,11 +39,8 @@ return [
     'components' => [
         //...
         'fs' => [
-            'class' => 'creocoder\flysystem\LocalFilesystem',
+            'class' => \creocoder\flysystem\LocalFilesystem::class,
             'path' => '@webroot/files',
-            // 'writeFlags' => LOCK_EX,
-            // 'linkHandling' => 0002,
-            // 'permissions' => [],
         ],
     ],
 ];
@@ -49,7 +48,19 @@ return [
 
 ### FTP filesystem
 
-Configure application `components` as follows
+Either run
+
+```bash
+$ composer require league/flysystem-ftp
+```
+
+or add
+
+```
+"league/flysystem-ftp": "^3.0"
+```
+
+to the `require` section of your `composer.json` file and configure application `components` as follows
 
 ```php
 return [
@@ -57,24 +68,21 @@ return [
     'components' => [
         //...
         'ftpFs' => [
-            'class' => 'creocoder\flysystem\FtpFilesystem',
+            'class' => \creocoder\flysystem\FtpFilesystem::class,
             'host' => 'ftp.example.com',
             // 'port' => 21,
             // 'username' => 'your-username',
             // 'password' => 'your-password',
             // 'ssl' => true,
-            // 'timeout' => 60,
+            // 'timeout' => 90,
             // 'root' => '/path/to/root',
-            // 'permPrivate' => 0700,
-            // 'permPublic' => 0744,
-            // 'passive' => false,
-            // 'transferMode' => FTP_TEXT,
+            // 'passive' => true,
         ],
     ],
 ];
 ```
 
-### NULL filesystem
+### In-Memory filesystem
 
 Configure application `components` as follows
 
@@ -83,8 +91,8 @@ return [
     //...
     'components' => [
         //...
-        'nullFs' => [
-            'class' => 'creocoder\flysystem\NullFilesystem',
+        'memoryFs' => [
+            'class' => \creocoder\flysystem\InMemoryFilesystem::class,
         ],
     ],
 ];
@@ -101,7 +109,7 @@ $ composer require league/flysystem-aws-s3-v3
 or add
 
 ```
-"league/flysystem-aws-s3-v3": "~1.0"
+"league/flysystem-aws-s3-v3": "^3.0"
 ```
 
 to the `require` section of your `composer.json` file and configure application `components` as follows
@@ -112,42 +120,31 @@ return [
     'components' => [
         //...
         'awss3Fs' => [
-            'class' => 'creocoder\flysystem\AwsS3Filesystem',
+            'class' => \creocoder\flysystem\AwsS3Filesystem::class,
             'key' => 'your-key',
             'secret' => 'your-secret',
             'bucket' => 'your-bucket',
             'region' => 'your-region',
             // 'version' => 'latest',
-            // 'baseUrl' => 'your-base-url',
             // 'prefix' => 'your-prefix',
-            // 'options' => [],
             // 'endpoint' => 'http://my-custom-url'
         ],
     ],
 ];
 ```
 
-### Azure filesystem
-
-Add the following to the `repositories` section of your `composer.json`
-
-```
-{
-    "type": "pear",
-    "url": "http://pear.php.net"
-}
-```
+### Azure Blob Storage filesystem
 
 Either run
 
 ```bash
-$ composer require league/flysystem-azure
+$ composer require league/flysystem-azure-blob-storage
 ```
 
 or add
 
 ```
-"league/flysystem-azure": "~1.0"
+"league/flysystem-azure-blob-storage": "^3.0"
 ```
 
 to the `require` section of your `composer.json` file and configure application `components` as follows
@@ -158,42 +155,10 @@ return [
     'components' => [
         //...
         'azureFs' => [
-            'class' => 'creocoder\flysystem\AzureFilesystem',
+            'class' => \creocoder\flysystem\AzureFilesystem::class,
             'accountName' => 'your-account-name',
             'accountKey' => 'your-account-key',
             'container' => 'your-container',
-        ],
-    ],
-];
-```
-
-### Copy filesystem
-
-Either run
-
-```bash
-$ composer require league/flysystem-copy
-```
-
-or add
-
-```
-"league/flysystem-copy": "~1.0"
-```
-
-to the `require` section of your `composer.json` file and configure application `components` as follows
-
-```php
-return [
-    //...
-    'components' => [
-        //...
-        'copyFs' => [
-            'class' => 'creocoder\flysystem\CopyFilesystem',
-            'consumerKey' => 'your-consumer-key',
-            'consumerSecret' => 'your-consumer-secret',
-            'accessToken' => 'your-access-token',
-            'tokenSecret' => 'your-token-secret',
             // 'prefix' => 'your-prefix',
         ],
     ],
@@ -205,13 +170,13 @@ return [
 Either run
 
 ```bash
-$ composer require league/flysystem-dropbox
+$ composer require spatie/flysystem-dropbox
 ```
 
 or add
 
 ```
-"league/flysystem-dropbox": "~1.0"
+"spatie/flysystem-dropbox": "^3.0"
 ```
 
 to the `require` section of your `composer.json` file and configure application `components` as follows
@@ -222,21 +187,20 @@ return [
     'components' => [
         //...
         'dropboxFs' => [
-            'class' => 'creocoder\flysystem\DropboxFilesystem',
+            'class' => \creocoder\flysystem\DropboxFilesystem::class,
             'token' => 'your-token',
-            'app' => 'your-app',
             // 'prefix' => 'your-prefix',
         ],
     ],
 ];
 ```
 
-## Google Cloud filesystem
+### Google Cloud Storage filesystem
 
 Run
 
 ```bash
-$ composer require "superbalist/flysystem-google-storage": "^5.0"
+$ composer require league/flysystem-google-cloud-storage
 ```
 
 and configure application `components` as follows
@@ -247,16 +211,17 @@ return [
     'components' => [
         //...
         'googleCloudFs' => [
-            'class' => 'creocoder\flysystem\GoogleCloudFilesystem',
+            'class' => \creocoder\flysystem\GoogleCloudFilesystem::class,
             'projectId' => 'GOOGLE_PROJECT_ID',
             'bucket' => 'GOOGLE_BUCKET',
-            'keyFilePath' => 'GOOGLE_KEY_FILE_PATH',
+            'keyFilePath' => '@app/config/google-credentials.json',
+            // 'prefix' => 'your-prefix',
         ],
     ],
 ];
 ```
 
-> Note: Credential configuration is read from the *keyFile*.
+> Note: Credential configuration is read from the *keyFilePath*.
 
 ### GridFS filesystem
 
@@ -269,7 +234,7 @@ $ composer require league/flysystem-gridfs
 or add
 
 ```
-"league/flysystem-gridfs": "~1.0"
+"league/flysystem-gridfs": "^3.0"
 ```
 
 to the `require` section of your `composer.json` file and configure application `components` as follows
@@ -280,43 +245,10 @@ return [
     'components' => [
         //...
         'gridFs' => [
-            'class' => 'creocoder\flysystem\GridFSFilesystem',
-            'server' => 'mongodb://localhost:27017',
+            'class' => \creocoder\flysystem\GridFSFilesystem::class,
+            'uri' => 'mongodb://localhost:27017',
             'database' => 'your-database',
-        ],
-    ],
-];
-```
-
-### Rackspace filesystem
-
-Either run
-
-```bash
-$ composer require league/flysystem-rackspace
-```
-
-or add
-
-```
-"league/flysystem-rackspace": "~1.0"
-```
-
-to the `require` section of your `composer.json` file and configure application `components` as follows
-
-```php
-return [
-    //...
-    'components' => [
-        //...
-        'rackspaceFs' => [
-            'class' => 'creocoder\flysystem\RackspaceFilesystem',
-            'endpoint' => 'your-endpoint',
-            'region' => 'your-region',
-            'username' => 'your-username',
-            'apiKey' => 'your-api-key',
-            'container' => 'your-container',
-            // 'prefix' => 'your-prefix',
+            // 'bucketName' => 'fs',
         ],
     ],
 ];
@@ -327,13 +259,13 @@ return [
 Either run
 
 ```bash
-$ composer require league/flysystem-sftp
+$ composer require league/flysystem-sftp-v3
 ```
 
 or add
 
 ```
-"league/flysystem-sftp": "~1.0"
+"league/flysystem-sftp-v3": "^3.0"
 ```
 
 to the `require` section of your `composer.json` file and configure application `components` as follows
@@ -344,16 +276,15 @@ return [
     'components' => [
         //...
         'sftpFs' => [
-            'class' => 'creocoder\flysystem\SftpFilesystem',
+            'class' => \creocoder\flysystem\SftpFilesystem::class,
             'host' => 'sftp.example.com',
             // 'port' => 22,
             'username' => 'your-username',
             'password' => 'your-password',
-            'privateKey' => '/path/to/or/contents/of/privatekey',
-            // 'timeout' => 60,
+            // 'privateKey' => '/path/to/or/contents/of/privatekey',
+            // 'passphrase' => 'your-passphrase',
+            // 'timeout' => 10,
             // 'root' => '/path/to/root',
-            // 'permPrivate' => 0700,
-            // 'permPublic' => 0744,
         ],
     ],
 ];
@@ -370,7 +301,7 @@ $ composer require league/flysystem-webdav
 or add
 
 ```
-"league/flysystem-webdav": "~1.0"
+"league/flysystem-webdav": "^3.0"
 ```
 
 to the `require` section of your `composer.json` file and configure application `components` as follows
@@ -381,13 +312,11 @@ return [
     'components' => [
         //...
         'webdavFs' => [
-            'class' => 'creocoder\flysystem\WebDAVFilesystem',
+            'class' => \creocoder\flysystem\WebDAVFilesystem::class,
             'baseUri' => 'your-base-uri',
             // 'userName' => 'your-user-name',
             // 'password' => 'your-password',
             // 'proxy' => 'your-proxy',
-            // 'authType' => \Sabre\DAV\Client::AUTH_BASIC,
-            // 'encoding' => \Sabre\DAV\Client::ENCODING_IDENTITY,
             // 'prefix' => 'your-prefix',
         ],
     ],
@@ -405,7 +334,7 @@ $ composer require league/flysystem-ziparchive
 or add
 
 ```
-"league/flysystem-ziparchive": "~1.0"
+"league/flysystem-ziparchive": "^3.0"
 ```
 
 to the `require` section of your `composer.json` file and configure application `components` as follows
@@ -416,69 +345,9 @@ return [
     'components' => [
         //...
         'ziparchiveFs' => [
-            'class' => 'creocoder\flysystem\ZipArchiveFilesystem',
+            'class' => \creocoder\flysystem\ZipArchiveFilesystem::class,
             'path' => '@webroot/files/archive.zip',
             // 'prefix' => 'your-prefix',
-        ],
-    ],
-];
-```
-
-### Caching feature
-
-Either run
-
-```bash
-$ composer require league/flysystem-cached-adapter
-```
-
-or add
-
-```
-"league/flysystem-cached-adapter": "~1.0"
-```
-
-to the `require` section of your `composer.json` file and configure `fsID` application component as follows
-
-```php
-return [
-    //...
-    'components' => [
-        //...
-        'fsID' => [
-            //...
-            'cache' => 'cacheID',
-            // 'cacheKey' => 'flysystem',
-            // 'cacheDuration' => 3600,
-        ],
-    ],
-];
-```
-
-### Replication feature
-
-Either run
-
-```bash
-$ composer require league/flysystem-replicate-adapter
-```
-
-or add
-
-```
-"league/flysystem-replicate-adapter": "~1.0"
-```
-
-to the `require` section of your `composer.json` file and configure `fsID` application component as follows
-
-```php
-return [
-    //...
-    'components' => [
-        //...
-        'fsID' => [
-            //...
-            'replica' => 'anotherFsID',
         ],
     ],
 ];
@@ -489,6 +358,8 @@ return [
 Configure `fsID` application component as follows
 
 ```php
+use League\Flysystem\Visibility;
+
 return [
     //...
     'components' => [
@@ -496,7 +367,7 @@ return [
         'fsID' => [
             //...
             'config' => [
-                'visibility' => \League\Flysystem\AdapterInterface::VISIBILITY_PRIVATE,
+                'visibility' => Visibility::PRIVATE,
             ],
         ],
     ],
@@ -507,52 +378,22 @@ return [
 
 ### Writing files
 
-To write file
+To write a file
 
 ```php
 Yii::$app->fs->write('filename.ext', 'contents');
 ```
 
-To write file using stream contents
+To write a file using stream contents
 
 ```php
 $stream = fopen('/path/to/somefile.ext', 'r+');
 Yii::$app->fs->writeStream('filename.ext', $stream);
 ```
 
-### Updating files
-
-To update file
-
-```php
-Yii::$app->fs->update('filename.ext', 'contents');
-```
-
-To update file using stream contents
-
-```php
-$stream = fopen('/path/to/somefile.ext', 'r+');
-Yii::$app->fs->updateStream('filename.ext', $stream);
-```
-
-### Writing or updating files
-
-To write or update file
-
-```php
-Yii::$app->fs->put('filename.ext', 'contents');
-```
-
-To write or update file using stream contents
-
-```php
-$stream = fopen('/path/to/somefile.ext', 'r+');
-Yii::$app->fs->putStream('filename.ext', $stream);
-```
-
 ### Reading files
 
-To read file
+To read a file
 
 ```php
 $contents = Yii::$app->fs->read('filename.ext');
@@ -571,77 +412,83 @@ fclose($stream);
 To check if a file exists
 
 ```php
-$exists = Yii::$app->fs->has('filename.ext');
+$exists = Yii::$app->fs->fileExists('filename.ext');
+```
+
+To check if a directory exists
+
+```php
+$exists = Yii::$app->fs->directoryExists('path/to/directory');
 ```
 
 ### Deleting files
 
-To delete file
+To delete a file
 
 ```php
 Yii::$app->fs->delete('filename.ext');
 ```
 
-### Reading and deleting files
+### Moving files
 
-To read and delete file
+To move a file
 
 ```php
-$contents = Yii::$app->fs->readAndDelete('filename.ext');
+Yii::$app->fs->move('filename.ext', 'newname.ext');
 ```
 
-### Renaming files
+### Copying files
 
-To rename file
+To copy a file
 
 ```php
-Yii::$app->fs->rename('filename.ext', 'newname.ext');
+Yii::$app->fs->copy('filename.ext', 'copy.ext');
 ```
 
 ### Getting files mimetype
 
-To get file mimetype
+To get a file mimetype
 
 ```php
-$mimetype = Yii::$app->fs->getMimetype('filename.ext');
+$mimetype = Yii::$app->fs->mimeType('filename.ext');
 ```
 
-### Getting files timestamp
+### Getting files last modified timestamp
 
-To get file timestamp
+To get a file last modified timestamp
 
 ```php
-$timestamp = Yii::$app->fs->getTimestamp('filename.ext');
+$timestamp = Yii::$app->fs->lastModified('filename.ext');
 ```
 
 ### Getting files size
 
-To get file size
+To get a file size
 
 ```php
-$timestamp = Yii::$app->fs->getSize('filename.ext');
+$size = Yii::$app->fs->fileSize('filename.ext');
 ```
 
 ### Creating directories
 
-To create directory
+To create a directory
 
 ```php
-Yii::$app->fs->createDir('path/to/directory');
+Yii::$app->fs->createDirectory('path/to/directory');
 ```
 
 Directories are also made implicitly when writing to a deeper path
 
 ```php
-Yii::$app->fs->write('path/to/filename.ext');
+Yii::$app->fs->write('path/to/filename.ext', 'contents');
 ```
 
 ### Deleting directories
 
-To delete directory
+To delete a directory
 
 ```php
-Yii::$app->fs->deleteDir('path/to/filename.ext');
+Yii::$app->fs->deleteDirectory('path/to/directory');
 ```
 
 ### Managing visibility
@@ -649,20 +496,20 @@ Yii::$app->fs->deleteDir('path/to/filename.ext');
 Visibility is the abstraction of file permissions across multiple platforms. Visibility can be either public or private.
 
 ```php
-use League\Flysystem\AdapterInterface;
+use League\Flysystem\Visibility;
 
 Yii::$app->fs->write('filename.ext', 'contents', [
-    'visibility' => AdapterInterface::VISIBILITY_PRIVATE
+    'visibility' => Visibility::PRIVATE
 ]);
 ```
 
 You can also change and check visibility of existing files
 
 ```php
-use League\Flysystem\AdapterInterface;
+use League\Flysystem\Visibility;
 
-if (Yii::$app->fs->getVisibility('filename.ext') === AdapterInterface::VISIBILITY_PRIVATE) {
-    Yii::$app->fs->setVisibility('filename.ext', AdapterInterface::VISIBILITY_PUBLIC);
+if (Yii::$app->fs->visibility('filename.ext') === Visibility::PRIVATE) {
+    Yii::$app->fs->setVisibility('filename.ext', Visibility::PUBLIC);
 }
 ```
 
@@ -671,12 +518,11 @@ if (Yii::$app->fs->getVisibility('filename.ext') === AdapterInterface::VISIBILIT
 To list contents
 
 ```php
-$contents = Yii::$app->fs->listContents();
+$contents = Yii::$app->fs->listContents('', false);
 
-foreach ($contents as $object) {
-    echo $object['basename']
-        . ' is located at' . $object['path']
-        . ' and is a ' . $object['type'];
+foreach ($contents as $item) {
+    echo $item->path();
+    echo $item->isFile() ? 'file' : 'directory';
 }
 ```
 
@@ -686,42 +532,41 @@ By default Flysystem lists the top directory non-recursively. You can supply a d
 $contents = Yii::$app->fs->listContents('path/to/directory', true);
 ```
 
-### Listing paths
+## Upgrading from v1
 
-To list paths
+If you are upgrading from the Flysystem v1 version of this extension, please note the following breaking changes:
 
+### Removed Features
+- **Caching**: The cached adapter is no longer available in Flysystem v3
+- **Replication**: The replicate adapter is no longer available in Flysystem v3
+- **Rackspace**: The Rackspace adapter has been removed as the service is discontinued
+- **NullFilesystem**: Replaced with `InMemoryFilesystem`
+
+### API Changes
+| v1 Method | v3 Method |
+|-----------|-----------|
+| `has($path)` | `fileExists($path)` / `directoryExists($path)` |
+| `createDir($path)` | `createDirectory($path)` |
+| `deleteDir($path)` | `deleteDirectory($path)` |
+| `rename($path, $newpath)` | `move($source, $destination)` |
+| `getTimestamp($path)` | `lastModified($path)` |
+| `getMimetype($path)` | `mimeType($path)` |
+| `getSize($path)` | `fileSize($path)` |
+| `getVisibility($path)` | `visibility($path)` |
+| `update()` / `put()` | `write()` |
+| `updateStream()` / `putStream()` | `writeStream()` |
+
+### Visibility Constants
 ```php
-$paths = Yii::$app->fs->listPaths();
+// Old (v1)
+use League\Flysystem\AdapterInterface;
+AdapterInterface::VISIBILITY_PRIVATE;
+AdapterInterface::VISIBILITY_PUBLIC;
 
-foreach ($paths as $path) {
-    echo $path;
-}
-```
-
-### Listing with ensured presence of specific metadata
-
-To list with ensured presence of specific metadata
-
-```php
-$listing = Yii::$app->fs->listWith(
-    ['mimetype', 'size', 'timestamp'],
-    'optional/path/to/directory',
-    true
-);
-
-foreach ($listing as $object) {
-    echo $object['path'] . ' has mimetype: ' . $object['mimetype'];
-}
-```
-
-### Getting file info with explicit metadata
-
-To get file info with explicit metadata
-
-```php
-$info = Yii::$app->fs->getWithMetadata('path/to/filename.ext', ['timestamp', 'mimetype']);
-echo $info['mimetype'];
-echo $info['timestamp'];
+// New (v3)
+use League\Flysystem\Visibility;
+Visibility::PRIVATE;
+Visibility::PUBLIC;
 ```
 
 ## Donating

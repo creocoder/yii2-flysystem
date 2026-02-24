@@ -7,8 +7,8 @@
 
 namespace creocoder\flysystem;
 
-use League\Flysystem\Azure\AzureAdapter;
-use WindowsAzure\Common\ServicesBuilder;
+use League\Flysystem\AzureBlobStorage\AzureBlobStorageAdapter;
+use MicrosoftAzure\Storage\Blob\BlobRestProxy;
 use yii\base\InvalidConfigException;
 
 /**
@@ -22,14 +22,26 @@ class AzureFilesystem extends Filesystem
      * @var string
      */
     public $accountName;
+
     /**
      * @var string
      */
     public $accountKey;
+
     /**
      * @var string
      */
     public $container;
+
+    /**
+     * @var string
+     */
+    public $prefix = '';
+
+    /**
+     * @var string|null Custom endpoint (e.g., for Azurite or sovereign clouds)
+     */
+    public $endpoint;
 
     /**
      * @inheritdoc
@@ -52,17 +64,26 @@ class AzureFilesystem extends Filesystem
     }
 
     /**
-     * @return AzureAdapter
+     * @return AzureBlobStorageAdapter
      */
     protected function prepareAdapter()
     {
-        return new AzureAdapter(
-            ServicesBuilder::getInstance()->createBlobService(sprintf(
-                'DefaultEndpointsProtocol=https;AccountName=%s;AccountKey=%s',
-                base64_encode($this->accountName),
-                base64_encode($this->accountKey)
-            )),
-            $this->container
+        $connectionString = sprintf(
+            'DefaultEndpointsProtocol=https;AccountName=%s;AccountKey=%s',
+            $this->accountName,
+            $this->accountKey
+        );
+
+        if ($this->endpoint !== null) {
+            $connectionString .= sprintf(';BlobEndpoint=%s', $this->endpoint);
+        }
+
+        $client = BlobRestProxy::createBlobService($connectionString);
+
+        return new AzureBlobStorageAdapter(
+            $client,
+            $this->container,
+            $this->prefix
         );
     }
 }
