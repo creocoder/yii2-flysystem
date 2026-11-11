@@ -93,7 +93,7 @@ class LocalFilesystem extends Filesystem
                 'public' => $this->directoryPublic,
                 'private' => $this->directoryPrivate,
             ],
-        ], $this->defaultForFiles, $this->defaultForDirectories);
+        ], $this->defaultForDirectories);
 
         return new LocalFilesystemAdapter(
             $this->path,

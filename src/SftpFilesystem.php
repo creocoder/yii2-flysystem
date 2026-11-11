@@ -145,7 +145,7 @@ class SftpFilesystem extends Filesystem
                 'public' => $this->directoryPublic,
                 'private' => $this->directoryPrivate,
             ],
-        ], $this->defaultForFiles, $this->defaultForDirectories);
+        ], $this->defaultForDirectories);
 
         return new SftpAdapter(
             $connectionProvider,
