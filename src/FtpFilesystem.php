@@ -170,6 +170,6 @@ class FtpFilesystem extends Filesystem
             ],
         ], $this->defaultForFiles, $this->defaultForDirectories);
 
-        return new FtpAdapter($options, null, $visibility);
+        return new FtpAdapter($options, null, null, $visibility);
     }
 }
