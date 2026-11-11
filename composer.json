@@ -28,8 +28,8 @@
         "yiisoft/yii2": "^2.0",
         "league/flysystem": "^3.0"
     },
-    "suggests": {
-        "league/flysystem-aws-s3-v3": "^1.0",
+    "suggest": {
+        "league/flysystem-aws-s3-v3": "^3.0",
         "league/flysystem-azure-blob-storage": "^3.0",
         "spatie/flysystem-dropbox": "^3.0",
         "league/flysystem-gridfs": "^3.0",
